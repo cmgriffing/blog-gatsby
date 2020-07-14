@@ -68,7 +68,17 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        href="http://fonts.googleapis.com/css?family=Pacifico"
+        rel="stylesheet"
+        type="text/css"
+      ></link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+      ></link>
+    </Helmet>
   )
 }
 
