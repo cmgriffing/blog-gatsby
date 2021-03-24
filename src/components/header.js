@@ -2,10 +2,19 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
+import breakpoints from "../config/breakpoints"
+
 const HeaderText = styled.h1`
   margin-top: 0;
-  margin-bottom: -28px;
-  font-size: 4em;
+  margin-bottom: -23px;
+  font-weight: 100;
+  font-size: 2.5em;
+  white-space: nowrap;
+
+  @media (min-width: ${breakpoints.breakpointMd}) {
+    font-size: 4em;
+    margin-bottom: -30px;
+  }
 `
 
 const BlurbSection = styled.div`
@@ -21,13 +30,15 @@ const BlurbSection = styled.div`
 `
 
 const Header = () => (
-  <div class="container">
+  <div className="container">
     <header>
       <HeaderText>
         <Link to="/">Chris Griffing</Link>
       </HeaderText>
     </header>
-    <BlurbSection>Quote-ish content here</BlurbSection>
+    <BlurbSection>
+      A Collection of Random Ramblings and Eclectic Interests
+    </BlurbSection>
   </div>
 )
 

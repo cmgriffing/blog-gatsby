@@ -5,14 +5,24 @@
   --backgroundColor: #eee;
   --linkHoverColor: #dd5424;
   --headingColor: #333;
+
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1600px;
 }
 
 body {
   background: var(--backgroundColor);
+  margin: 0;
+  padding: 0;
 }
 
 * {
   font-family: Bitter, serif;
+  box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 h1 {
@@ -23,7 +33,12 @@ h1 a {
   font-family: Pacifico, serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--headingColor);
 }
 
@@ -60,33 +75,60 @@ a:hover {
   text-shadow: none;
 }
 
-
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-@media(min-width: 600px) {
+@media (min-width: 600px) {
   .container {
     max-width: 600px;
   }
 }
 
-@media(min-width: 800px) {
+@media (min-width: 800px) {
   .container {
     max-width: 800px;
   }
 }
 
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
   .container {
     max-width: 1000px;
   }
 }
 
-@media(min-width: 1200px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1200px;
   }
 }
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .page-content { } */
+
+.page-content.with-sidebar {
+  width: 100%;
+}
+
+.sidebar {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .page-content.with-sidebar {
+    width: 68%;
+  }
+
+  .sidebar {
+    width: 32%;
+  }
+}
+
+/* @import "../../static/prismjs/themes/prism.css"; */
+@import "../../static/prismjs/themes/prism-twilight.css";

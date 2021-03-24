@@ -1,0 +1,338 @@
+import React, { useState, useEffect, useRef } from "react"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
+import styled from "styled-components"
+
+import breakpoints from "../config/breakpoints"
+
+import Layout from "../components/layout"
+import Sidebar from "../components/Sidebar"
+import SEO from "../components/seo"
+
+import BackgroundImage from "gatsby-background-image"
+
+import MuuriGrid from "react-muuri"
+
+import "./muuri.css"
+
+const ProjectList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+  /* grid-template-columns: repeat(auto-fill, 1fr); */
+
+  grid-auto-flow: dense;
+  /* grid-auto-rows: 200px; */
+  position: relative;
+`
+
+const ProjectLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (min-width: ${breakpoints.breakpointSm}) {
+    flex-direction: row;
+  }
+`
+
+const ProjectDate = styled.div`
+  color: #aaa;
+`
+
+const ProjectImageWrapper = styled.div`
+  /* border: 1px solid #e5e5e5; */
+  /* border-radius: 4px; */
+  /* padding: 8px; */
+  background: #ccc;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  @media (min-width: ${breakpoints.breakpointMd}) {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gatsby-image-wrapper {
+    width: 184px;
+    border-radius: 4px;
+
+    img {
+      border-radius: 4px;
+    }
+  }
+`
+
+const ProjectTitle = styled.h3`
+  color: var(--text-color);
+  margin-bottom: 4px;
+`
+
+const ProjectExcerptWrapper = styled.div`
+  padding: 16px;
+  width: 100%;
+  background: rgba(239, 239, 239, 0.8);
+`
+
+const ProjectExcerpt = styled.p`
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+`
+
+const ProjectListItemContent = styled.div`
+  width: 100%;
+  height: 300px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+
+  @media (min-width: ${breakpoints.breakpointMd}) {
+    width: auto;
+  }
+`
+
+const ProjectListItem = styled.li`
+  grid-column: ${({ span }) => `auto / span ${span}`};
+  width: ${({ span }) => `${span * 33.33}%`};
+
+  ${ProjectTitle} {
+    background: rgba(239, 239, 239, 0.8);
+    color: var(--headingColor);
+    margin: 0;
+    padding: 16px;
+  }
+
+  ${ProjectExcerpt} {
+    color: var(--headingColor);
+    width: 100%;
+    margin: 0;
+  }
+
+  &:hover,
+  &:focus-within {
+    z-index: 100;
+
+    ${ProjectLink} {
+      transform: scale(1.05) !important;
+    }
+
+    ${ProjectTitle},
+    ${ProjectExcerptWrapper} {
+      background: rgba(221, 84, 36, 0.8);
+      color: white;
+    }
+
+    ${ProjectExcerpt} {
+      color: white;
+    }
+
+    ${ProjectImageWrapper} {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
+`
+
+const ProjectImage = styled(BackgroundImage)`
+  z-index: 1;
+`
+
+const FilterButtons = styled.div`
+  text-align: center;
+`
+
+const ProjectsPage = ({ data }) => {
+  const projects = data.projects.edges
+  const otherPosts = data.blogPosts.edges
+
+  const gridElement = useRef(null)
+
+  const [muuriGrid, setMuuriGrid] = useState(null)
+
+  useEffect(() => {
+    console.log({ gridElement })
+    if (gridElement.current) {
+      setMuuriGrid(
+        new MuuriGrid({
+          node: gridElement.current,
+          defaultOptions: {
+            dragEnabled: false,
+            layout: {
+              fillGaps: true,
+            },
+          },
+        })
+      )
+    }
+  }, [gridElement, setMuuriGrid])
+
+  const labels = new Set()
+
+  projects.forEach(project => {
+    console.log({ project })
+    project.node.frontmatter.labels.forEach(label => {
+      labels.add(label)
+    })
+  })
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <div className="page-content with-sidebar">
+        <h1>Projects</h1>
+        <FilterButtons>
+          <button
+            onClick={() => {
+              muuriGrid.getMethod("filter", ".item")
+            }}
+            class="button"
+          >
+            All
+          </button>
+          {Array.from(labels).map(label => (
+            <button
+              className="button"
+              onClick={() => {
+                muuriGrid.getMethod("filter", `.${label}`)
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </FilterButtons>
+        <ProjectList ref={gridElement}>
+          {projects.map(post => {
+            const { frontmatter, html, excerpt } = post.node
+            const { slug, title, coverImage, date, size } = frontmatter
+
+            const path = `/projects/${slug}`
+
+            return (
+              <ProjectListItem
+                span={size}
+                className={"item " + frontmatter.labels.join(" ")}
+              >
+                <ProjectLink to={path}>
+                  <ProjectImageWrapper>
+                    <ProjectImage
+                      fluid={{
+                        ...coverImage.childImageSharp.fluid,
+                        base64: `"data:image/svg+xml;${coverImage.childImageSharp.sqip.dataURI}"`,
+                      }}
+                    >
+                      <ProjectListItemContent>
+                        <ProjectTitle>{title}</ProjectTitle>
+                        <ProjectExcerptWrapper>
+                          <ProjectExcerpt>{excerpt}</ProjectExcerpt>
+                        </ProjectExcerptWrapper>
+                      </ProjectListItemContent>
+                    </ProjectImage>
+                  </ProjectImageWrapper>
+                </ProjectLink>
+              </ProjectListItem>
+            )
+          })}
+        </ProjectList>
+      </div>
+      <Sidebar
+        className="sidebar"
+        data={data}
+        otherPosts={otherPosts}
+        showProjectsBlock={false}
+      />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "selfportrait.jpg" }) {
+      childImageSharp {
+        sqip(
+          numberOfPrimitives: 120
+          blur: 0
+          width: 256
+          height: 256
+          mode: 4
+        ) {
+          dataURI
+        }
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 400, maxHeight: 400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 100
+      filter: { fileAbsolutePath: { regex: "/projects/" } }
+    ) {
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            date
+            slug
+            size
+            labels
+            coverImage {
+              childImageSharp {
+                sqip(
+                  numberOfPrimitives: 420
+                  blur: 0
+                  width: 256
+                  height: 256
+                  mode: 4
+                ) {
+                  dataURI
+                }
+                fluid(
+                  maxWidth: 400
+                  maxHeight: 400
+                  fit: COVER
+                  cropFocus: CENTER
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    blogPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 10
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            date
+            slug
+          }
+        }
+      }
+    }
+  }
+`
+
+export default ProjectsPage
