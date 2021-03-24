@@ -6,7 +6,7 @@ import styled from "styled-components"
 import breakpoints from "../config/breakpoints"
 
 import Layout from "../components/layout"
-import Sidebar from "../components/Sidebar"
+import Sidebar from "../components/sidebar"
 import SEO from "../components/seo"
 
 const PostList = styled.ol`
