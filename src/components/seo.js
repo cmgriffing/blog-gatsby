@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }) {
       ].concat(meta)}
     >
       <link
-        href="http://fonts.googleapis.com/css?family=Pacifico"
+        href="https://fonts.googleapis.com/css?family=Pacifico"
         rel="stylesheet"
         type="text/css"
       ></link>
