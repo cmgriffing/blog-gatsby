@@ -1,41 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/site-updates/2012/04/11/about-time/",
-      "destination": "/about-time/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/ios/2012/09/24/uiviewcontroller-hierarchy-inconsistency-after-updating-to-xcode-4-5/",
-      "destination": "/uiviewcontroller-hierarchy-inconsistency-after-updating-to-xcode-4-5/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/ios/2013/02/09/xcode-unable-to-write-to-file-xcodederiveddataappname-blah/",
-      "destination": "/xcode-unable-to-write-to-file-xcodederiveddataappname-blah/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/php/2012/04/12/how-to-mock-pdo-and-other-objects/",
-      "destination": "/how-to-mock-pdo-and-other-objects/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/php/2012/04/25/mocking-pdoand-other-objects-inside-already-namespaced-classes/",
-      "destination": "/mocking-pdoand-other-objects-inside-already-namespaced-classes/",
-      "permanent": true
-    },
-    {
-      "source": "/site-updates/2013/07/13/server-change/",
-      "destination": "/server-change/",
-      "permanent": true
-    },
-    {
-      "source": "/rants/2014/01/04/blog-post-url-structure-are-the-experts-wrong/",
-      "destination": "/blog-post-url-structure-are-the-experts-wrong/",
-      "permanent": true
-    },
-    {
       "source": "/coding/2016/04/19/learning-by-porting-rust-edition/",
       "destination": "/learning-by-porting-rust-edition/",
       "permanent": true
@@ -66,21 +31,6 @@
       "permanent": true
     },
     {
-      "source": "/coding/2013/09/30/knockoutjs-and-progressive-enhancement-for-select-form-fields/",
-      "destination": "/knockoutjs-and-progressive-enhancement-for-select-form-fields/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/2013/11/13/new-css-border-spec-idea-extra-border/",
-      "destination": "/new-css-border-spec-idea-extra-border/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/2014/01/30/better-responsive-image-semantics/",
-      "destination": "/better-responsive-image-semantics/",
-      "permanent": true
-    },
-    {
       "source": "/coding/2014/04/19/useful-magento-template-methods/",
       "destination": "/useful-magento-template-methods/",
       "permanent": true
@@ -103,11 +53,6 @@
     {
       "source": "/coding/ember/2016/04/12/introducing-nimbuscam/",
       "destination": "/introducing-nimbuscam/",
-      "permanent": true
-    },
-    {
-      "source": "/coding/react/2016/06/18/code-sharing-between-react-native-and-react/",
-      "destination": "/code-sharing-between-react-native-and-react/",
       "permanent": true
     },
     {
