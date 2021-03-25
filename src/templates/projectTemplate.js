@@ -17,10 +17,6 @@ const PostImage = styled(Img)`
     @media (min-width: ${breakpoints[breakpoint]}) {
       width: 100vw !important;
       height: 250px !important;
-      // transform: translateX(
-      //   calc((100vw - ${breakpoints[breakpoint]}) * -0.5 - 16px);
-      // );
-
       margin-left: calc((100vw - ${breakpoints[breakpoint]}) * -0.5 - 16px);
     }
   `

@@ -8,14 +8,19 @@ import Img from "gatsby-image"
 import breakpoints from "../config/breakpoints"
 
 const PostImage = styled(Img)`
-  max-width: calc(100vw - 32px);
-  height: auto;
+  width: 100% !important;
+  min-height: 100px;
+  height: auto !important;
 
-  @media (max-width: ${breakpoints.breakpointMd}) {
-    width: 100% !important;
-    min-height: 100px;
-    height: auto !important;
-  }
+  ${Object.keys(breakpoints).map(
+    breakpoint => `
+    @media (min-width: ${breakpoints[breakpoint]}) {
+      width: 100vw !important;
+      height: 250px !important;
+      margin-left: calc((100vw - ${breakpoints[breakpoint]}) * -0.5 - 16px);
+    }
+  `
+  )}
 `
 
 export default function Template({
