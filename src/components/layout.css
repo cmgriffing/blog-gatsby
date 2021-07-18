@@ -6,6 +6,7 @@
   --linkHoverColor: #dd5424;
   --headingColor: #333;
 
+  --breakpoint-xs: 480px;
   --breakpoint-sm: 600px;
   --breakpoint-md: 800px;
   --breakpoint-lg: 1000px;

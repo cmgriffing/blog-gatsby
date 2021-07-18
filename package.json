@@ -25,12 +25,14 @@
     "prismjs": "^1.22.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-countup": "^4.4.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-muuri": "^0.3.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
+    "gatsby-transformer-csv": "^3.9.0",
     "prettier": "2.0.5"
   },
   "keywords": [
