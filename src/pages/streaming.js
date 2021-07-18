@@ -206,7 +206,7 @@ const ProjectsPage = ({ data }) => {
         className="sidebar"
         data={data}
         otherPosts={otherPosts}
-        showProjectsBlock={false}
+        showStreamingBlock={false}
       />
     </Layout>
   )

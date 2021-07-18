@@ -94,13 +94,33 @@ const ProjectsBlockLink = styled(Link)`
   }
 `
 
-const Sidebar = ({ children, otherPosts, data, showProjectsBlock }) => {
+const StreamingLink = styled(Link)`
+  display: block;
+  margin-top: 16px;
+
+  h4 {
+    display: inline;
+    padding-right: 16px;
+  }
+`
+
+const Sidebar = ({
+  children,
+  otherPosts,
+  data,
+  showProjectsBlock,
+  showStreamingBlock,
+}) => {
   if (showProjectsBlock !== false) {
     showProjectsBlock = true
   }
 
   // Temporarily disable projects while finishing content for them
   showProjectsBlock = false
+
+  if (showStreamingBlock !== false) {
+    showStreamingBlock = true
+  }
 
   return (
     <SidebarWrapper className="sidebar">
@@ -111,6 +131,17 @@ const Sidebar = ({ children, otherPosts, data, showProjectsBlock }) => {
         }}
       />
       <SidebarContent>
+        {showStreamingBlock && (
+          <div>
+            <StreamingLink to="/streaming">
+              <h4>Streaming</h4> see more
+            </StreamingLink>
+            <p>
+              I live-code on Twitch. We are always looking for sponsors and
+              partnered content. Check it out.
+            </p>
+          </div>
+        )}
         {showProjectsBlock && (
           <div>
             <ProjectsBlockLink to="/projects">
