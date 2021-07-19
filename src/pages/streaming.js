@@ -39,6 +39,15 @@ const MetricCounter = styled(CountUp)`
   color: var(--linkHoverColor);
 `
 
+const MediaTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 0;
+`
+
+const MediaLink = styled.a`
+  color: var(--linkHoverColor);
+`
+
 const ContactLink = styled.a`
   margin-left: 8px;
 `
@@ -97,6 +106,15 @@ const ProjectsPage = ({ data }) => {
         </p>
 
         {/* metrics */}
+        <MediaTitle>
+          <MediaLink
+            href="https://www.twitch.tv/cmgriffing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            twitch.tv/cmgriffing
+          </MediaLink>
+        </MediaTitle>
         <Metrics>
           <Metric>
             <h3>Monthly View Total</h3>
@@ -131,14 +149,14 @@ const ProjectsPage = ({ data }) => {
             <li>
               <h4>Microsoft</h4>
               <h5>Using Azure Computer Vision to detect emotions in a video</h5>
-              <div>
+              <p>
                 This was a fun collaboration. We used Azure Cognitive Services
                 and their Face API to determine emotions. We didn't quite get as
                 far as using a live video feed, but the implementation using
                 mock photos and updating them on an interval was a great
                 success. Kudos to the video editor. It encapsulates the fun we
                 had in just the right way.
-              </div>
+              </p>
               <h5>Relevant Link(s)</h5>
               <ul>
                 <li>
@@ -157,14 +175,14 @@ const ProjectsPage = ({ data }) => {
             <li>
               <h4>Server.pro</h4>
               <h5>Hosting Polliday</h5>
-              <div>
+              <p>
                 We wanted a tool like strawpoll.me but with enough of the
                 features I needed on top. Editing questions, Multi-selection,
                 etc. We used Meteor and tried Galaxy, the hosted meteor
                 solution. That didn't live up to the task so Server.pro
                 graciously sponsored the hosting. Performance is great. and
                 spinning up docker inside the environment proved easy enough.
-              </div>
+              </p>
               <h5>Relevant Link(s)</h5>
               <ul>
                 <li>
@@ -195,11 +213,13 @@ const ProjectsPage = ({ data }) => {
         {/* inquiry */}
         <InquirySection>
           <h3>Interested?</h3>
-          Would you like to partner up and let me promote your product or
-          service? Get in touch with me at
-          <ContactLink href="mailto:contact@chrisgriffing.com">
-            contact@chrisgriffing.com
-          </ContactLink>
+          <p>
+            Would you like to partner up and let me promote your product or
+            service? Get in touch with me at
+            <ContactLink href="mailto:contact@chrisgriffing.com">
+              contact@chrisgriffing.com
+            </ContactLink>
+          </p>
         </InquirySection>
       </div>
       <Sidebar

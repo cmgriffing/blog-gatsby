@@ -17,6 +17,12 @@ const Wrapper = styled.div`
   overflow-x: hidden;
 `
 
+const Footer = styled.footer`
+  padding: 16px;
+  margin-top: 42px;
+  text-align: center;
+`
+
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
@@ -36,11 +42,7 @@ const Layout = ({ children }) => {
       <div className="container">
         <main>{children}</main>
       </div>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer>© {new Date().getFullYear()} Chris Griffing</Footer>
     </Wrapper>
   )
 }
