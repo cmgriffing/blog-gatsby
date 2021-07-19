@@ -56,6 +56,10 @@ const InquirySection = styled.div`
   margin-top: 32px;
 `
 
+const IndentedParagraph = styled.p`
+  margin-left: 24px;
+`
+
 const ProjectsPage = ({ data }) => {
   const otherPosts = data.blogPosts.edges
   const monthlyMetrics = data.monthlyMetrics.edges
@@ -97,13 +101,13 @@ const ProjectsPage = ({ data }) => {
         <h1>Streaming & Media</h1>
 
         {/* info about the stream */}
-        <p>
+        <IndentedParagraph>
           We have a blast working on various side projects. Frontend, backend,
           and everything in between. The stream is focused on taking ideas and
           launching them. The whole process is on display and we all learn
           something from it. We are always looking for something new and cool to
           check out and demonstrate.
-        </p>
+        </IndentedParagraph>
 
         {/* metrics */}
         <MediaTitle>
@@ -149,14 +153,14 @@ const ProjectsPage = ({ data }) => {
             <li>
               <h4>Microsoft</h4>
               <h5>Using Azure Computer Vision to detect emotions in a video</h5>
-              <p>
+              <IndentedParagraph>
                 This was a fun collaboration. We used Azure Cognitive Services
                 and their Face API to determine emotions. We didn't quite get as
                 far as using a live video feed, but the implementation using
                 mock photos and updating them on an interval was a great
                 success. Kudos to the video editor. It encapsulates the fun we
                 had in just the right way.
-              </p>
+              </IndentedParagraph>
               <h5>Relevant Link(s)</h5>
               <ul>
                 <li>
@@ -175,14 +179,14 @@ const ProjectsPage = ({ data }) => {
             <li>
               <h4>Server.pro</h4>
               <h5>Hosting Polliday</h5>
-              <p>
+              <IndentedParagraph>
                 We wanted a tool like strawpoll.me but with enough of the
                 features I needed on top. Editing questions, Multi-selection,
                 etc. We used Meteor and tried Galaxy, the hosted meteor
                 solution. That didn't live up to the task so Server.pro
                 graciously sponsored the hosting. Performance is great. and
                 spinning up docker inside the environment proved easy enough.
-              </p>
+              </IndentedParagraph>
               <h5>Relevant Link(s)</h5>
               <ul>
                 <li>
@@ -213,13 +217,13 @@ const ProjectsPage = ({ data }) => {
         {/* inquiry */}
         <InquirySection>
           <h3>Interested?</h3>
-          <p>
+          <IndentedParagraph>
             Would you like to partner up and let me promote your product or
             service? Get in touch with me at
             <ContactLink href="mailto:contact@chrisgriffing.com">
               contact@chrisgriffing.com
             </ContactLink>
-          </p>
+          </IndentedParagraph>
         </InquirySection>
       </div>
       <Sidebar
