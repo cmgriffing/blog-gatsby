@@ -1,7 +1,7 @@
 ---
 title: "Prefer return objects instead of exceptions"
 date: "2016-06-25"
-coverImage: "./images/RantModeOn.jpg"
+coverImage: "../images/RantModeOn.jpg"
 slug: "prefer-return-objects-instead-exceptions"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Mocking PDO(and other) Objects Inside Already Namespaced Classes"
 date: "2012-04-25"
-coverImage: "./images/php-pdo-monkeypatched-part2.jpg"
+coverImage: "../images/php-pdo-monkeypatched-part2.jpg"
 slug: "mocking-pdo-and-other-objects-inside-already-namespaced-classes"
 ---
 

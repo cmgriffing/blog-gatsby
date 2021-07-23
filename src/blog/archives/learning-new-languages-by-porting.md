@@ -1,7 +1,7 @@
 ---
 title: "Learning New Languages by Porting"
 date: "2016-04-18"
-coverImage: "./images/Judge-Dredd-Still-Image-012.jpg"
+coverImage: "../images/Judge-Dredd-Still-Image-012.jpg"
 slug: "learning-new-languages-by-porting"
 ---
 

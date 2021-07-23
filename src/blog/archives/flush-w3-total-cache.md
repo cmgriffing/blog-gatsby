@@ -1,7 +1,7 @@
 ---
 title: "How To Flush W3 Total Cache Programmatically"
 date: "2014-03-14"
-coverImage: "./images/Money-in-the-Toilet.jpg"
+coverImage: "../images/Money-in-the-Toilet.jpg"
 slug: "flush-w3-total-cache"
 ---
 

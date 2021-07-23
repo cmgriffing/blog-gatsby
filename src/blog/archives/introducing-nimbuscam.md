@@ -1,7 +1,7 @@
 ---
 title: "Introducing Nimbuscam"
 date: "2016-04-13"
-coverImage: "./images/nimbuscam-8e67ed86bc40a41fb4c9db6eed05409d.png"
+coverImage: "../images/nimbuscam-8e67ed86bc40a41fb4c9db6eed05409d.png"
 slug: "introducing-nimbuscam"
 ---
 

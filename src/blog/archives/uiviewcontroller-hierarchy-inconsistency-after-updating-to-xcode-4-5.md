@@ -1,7 +1,7 @@
 ---
 title: "UIViewController Hierarchy Inconsistency After Updating To Xcode 4.5"
 date: "2012-09-24"
-coverImage: "./images/viewcontroller.jpg"
+coverImage: "../images/viewcontroller.jpg"
 slug: "uiviewcontroller-hierarchy-inconsistency-after-updating-to-xcode-4-5"
 ---
 

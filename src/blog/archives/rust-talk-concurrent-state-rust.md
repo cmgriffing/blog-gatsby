@@ -1,7 +1,7 @@
 ---
 title: "Rust Talk: The Concurrent State of Rust"
 date: "2016-08-10"
-coverImage: "./images/600_338792062.jpeg"
+coverImage: "../images/600_338792062.jpeg"
 slug: "rust-talk-concurrent-state-rust"
 ---
 

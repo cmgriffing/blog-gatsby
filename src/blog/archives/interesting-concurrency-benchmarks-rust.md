@@ -1,7 +1,7 @@
 ---
 title: "Interesting Concurrency Benchmarks in Rust"
 date: "2016-09-11"
-coverImage: "./images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh__and_Desktop.png"
+coverImage: "../images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh__and_Desktop.png"
 slug: "interesting-concurrency-benchmarks-rust"
 ---
 

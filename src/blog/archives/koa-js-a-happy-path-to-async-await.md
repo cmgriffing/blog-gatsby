@@ -1,7 +1,7 @@
 ---
 title: "Koa.js: A happy path to async/await"
 date: "2016-03-14"
-coverImage: "./images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
+coverImage: "../images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
 slug: "koa-js-a-happy-path-to-async-await"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Progressively Enhanced Isomorphism with React"
 date: "2015-03-16"
-coverImage: "./images/logo_og.png"
+coverImage: "../images/logo_og.png"
 slug: "progressively-enhanced-isomorphism-with-react"
 ---
 

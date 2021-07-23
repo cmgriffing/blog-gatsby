@@ -1,7 +1,7 @@
 ---
 title: "Better Responsive Image Semantics"
 date: "2014-01-31"
-coverImage: "./images/fundraise.com-responsive.png"
+coverImage: "../images/fundraise.com-responsive.png"
 slug: "better-responsive-image-semantics"
 ---
 

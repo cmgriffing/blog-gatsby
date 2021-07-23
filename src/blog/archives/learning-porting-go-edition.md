@@ -1,7 +1,7 @@
 ---
 title: "Learning by Porting: Go Edition"
 date: "2017-01-22"
-coverImage: "./images/golang.png"
+coverImage: "../images/golang.png"
 slug: "learning-porting-go-edition"
 ---
 

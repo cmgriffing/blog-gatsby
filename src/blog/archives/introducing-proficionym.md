@@ -1,7 +1,7 @@
 ---
 title: "Introducing Proficionym"
 date: "2015-02-14"
-coverImage: "./images/proficionym-blue.png"
+coverImage: "../images/proficionym-blue.png"
 slug: "introducing-proficionym"
 ---
 

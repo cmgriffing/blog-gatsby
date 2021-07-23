@@ -1,7 +1,7 @@
 ---
 title: "Useful Magento Template Methods"
 date: "2014-04-20"
-coverImage: "./images/logo_magento.png"
+coverImage: "../images/logo_magento.png"
 slug: "useful-magento-template-methods"
 ---
 

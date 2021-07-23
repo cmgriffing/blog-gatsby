@@ -1,7 +1,7 @@
 ---
 title: "Blog Post URL Structure: Are the experts wrong?"
 date: "2014-01-05"
-coverImage: "./images/calendar.jpg"
+coverImage: "../images/calendar.jpg"
 slug: "blog-post-url-structure-are-the-experts-wrong"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "KnockoutJS and Progressive Enhancement for Select Form Fields"
 date: "2013-10-01"
-coverImage: "./images/icon.png"
+coverImage: "../images/icon.png"
 slug: "knockoutjs-and-progressive-enhancement-for-select-form-fields"
 ---
 

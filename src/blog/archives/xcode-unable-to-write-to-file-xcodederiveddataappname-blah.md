@@ -1,7 +1,7 @@
 ---
 title: "Xcode Unable to write to file Xcode/DerivedData/appname-blah"
 date: "2013-02-09"
-coverImage: "./images/writetofile.jpg"
+coverImage: "../images/writetofile.jpg"
 slug: "xcode-unable-to-write-to-file-xcodederiveddataappname-blah"
 ---
 

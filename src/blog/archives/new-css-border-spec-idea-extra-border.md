@@ -1,7 +1,7 @@
 ---
 title: "New CSS border spec idea: Extra-border"
 date: "2013-11-13"
-coverImage: "./images/css-is-awesome-20090407-142244.jpg"
+coverImage: "../images/css-is-awesome-20090407-142244.jpg"
 slug: "new-css-border-spec-idea-extra-border"
 ---
 

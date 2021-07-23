@@ -1,7 +1,7 @@
 ---
 title: "How to Mock PDO (and other) objects"
 date: "2012-04-12"
-coverImage: "./images/php-pdo-monkeypatched.jpg"
+coverImage: "../images/php-pdo-monkeypatched.jpg"
 slug: "how-to-mock-pdo-and-other-objects"
 ---
 

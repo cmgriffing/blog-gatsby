@@ -1,7 +1,7 @@
 ---
 title: "Reducing Angular2 Subscription Boilerplate with Custom Decorators"
 date: "2016-09-09"
-coverImage: "./images/angular.png"
+coverImage: "../images/angular.png"
 slug: "reducing-angular2-boilerplate-custom-decorators"
 ---
 

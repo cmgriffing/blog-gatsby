@@ -1,7 +1,7 @@
 ---
 title: "First Impressions: Code sharing between React Native and React"
 date: "2016-06-18"
-coverImage: "./images/ReactNative-feature.png"
+coverImage: "../images/ReactNative-feature.png"
 slug: "code-sharing-between-react-native-and-react"
 ---
 

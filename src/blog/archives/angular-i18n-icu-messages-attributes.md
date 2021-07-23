@@ -2,7 +2,7 @@
 title: "Angular i18n: ICU Messages in Attributes"
 date: "2017-07-22"
 slug: "angular-i18n-icu-messages-attributes"
-coverImage: "./images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
+coverImage: "../images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
 ---
 
 ### The Gist

@@ -1,7 +1,7 @@
 ---
 title: "Learning by Porting: Rust Edition"
 date: "2016-04-19"
-coverImage: "./images/rust.png"
+coverImage: "../images/rust.png"
 slug: "learning-by-porting-rust-edition"
 ---
 

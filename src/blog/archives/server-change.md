@@ -1,7 +1,7 @@
 ---
 title: "Server Change"
 date: "2013-07-14"
-coverImage: "./images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
+coverImage: "../images/11718379-it-business-man-in-network-server-room-have-problems-and-looking-for-disaster-situation-solution1.jpg"
 slug: "server-change"
 ---
 
