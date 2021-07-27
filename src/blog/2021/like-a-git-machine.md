@@ -22,7 +22,7 @@ Here is a link: [https://cmgriffing.github.io/git-machine/](https://cmgriffing.g
 and the github repo is here:
 [https://github.com/cmgriffing/git-machine](https://github.com/cmgriffing/git-machine)
 
-![Let the disco ball of productivity consume you](./greyson-joralemon-ORSGQc-2Ef8-unsplash.jpg)
+![Let the disco ball of productivity consume you](../images/greyson-joralemon-ORSGQc-2Ef8-unsplash.jpg)
 
 How does it work? Lets dig into it. It uses Go and a faux pattern matching library. It is not quite as robust as you would expect from a language with proper pattern matching but it was surprisingly easy to use. Here is a link to the library we used for that: [https://github.com/alexpantyukhin/go-pattern-match](https://github.com/alexpantyukhin/go-pattern-match)
 
@@ -30,4 +30,4 @@ You might also wonder how we made such an amazing install process. Well, sorry, 
 
 At the end of the day, we actually have a usable tool for making git commands more fun. You don't have to use it. Nobody is going to force you but, damnit, you owe it to yourself to let your git commands flow through you. In the future, we may even make it so that the "grammar" is plugin based.
 
-![Cartoonish James Brown figurine](./start-digital-EgEjFesJMlg-unsplash.jpg)
+![Cartoonish James Brown figurine](../images/start-digital-EgEjFesJMlg-unsplash.jpg)
