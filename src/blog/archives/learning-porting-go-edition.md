@@ -15,7 +15,7 @@ Reading docs and looking at blog posts, the language and syntax was immediately 
 
 I didn't really have that many problems. The problems I did have, were definitely my own fault. There may have been a pothole or two in the road, but my finger was on the trigger so it was my fault.
 
-![pulp-fiction-car](images/pulp-fiction-car-768x419.jpg)
+![pulp-fiction-car](../images/pulp-fiction-car-768x419.jpg)
 
 For the most part, my biggest problems and issues arose from the use of convention over configuration. The first instance of this was the "workspace". I found that quite annoying. I have heard that this is getting or going to be getting better.
 
@@ -27,7 +27,7 @@ I think one major way they could improve that is with compiler errors and messag
 
 Despite the issues I had above, it still felt like things were going to work out well. I may have been covered in blood but I was starting to understand that I didn't have to like everything about it. Go wasn't there to waste time and play games, it was there to help me be productive.
 
-![pulp-fiction-wolf](images/pulp-fiction-wolf-768x325.jpg)
+![pulp-fiction-wolf](../images/pulp-fiction-wolf-768x325.jpg)
 
 It might seem like I didn't enjoy my time with Go. That would be a false assumption. There are just so many things that Go does well.
 
@@ -43,7 +43,7 @@ Last but not least, goroutines. I see what the hype is about. They are so easy t
 
 Go helped me be very productive and the only cost was feeling like a dork a couple times.
 
-![pulp-fiction-dorks](images/pulp-fiction-dorks-768x326.jpg)
+![pulp-fiction-dorks](../images/pulp-fiction-dorks-768x326.jpg)
 
 So, is Go my choice for what I want to write backends in for side projects for the foreseeable future? That is a bit hard to say. I think it has a very real place for microservices and it is fast. The ecosystem is also large and growing steadily. (the meetups hosted by Tune are great)
 

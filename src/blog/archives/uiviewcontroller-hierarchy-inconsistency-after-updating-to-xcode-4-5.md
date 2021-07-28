@@ -11,7 +11,7 @@ There were some stackoverflow questions regarding this error, but none of them h
 
 I found it had to do with an extraneous view controller in the xib.
 
-[![](images/viewcontroller.jpg "viewcontroller")](http://chrisgriffing.com/wp-content/uploads/2012/11/viewcontroller.jpg)
+[![](../images/viewcontroller.jpg "viewcontroller")](http://chrisgriffing.com/wp-content/uploads/2012/11/viewcontroller.jpg)
 
 After deleting the view controller, the project compiled fine.  I had set up this xib before I fully understood iOS development, and this looks obviously wrong now.  However, the project compiled and ran fine previously, which made it a hard bug to track down.
 

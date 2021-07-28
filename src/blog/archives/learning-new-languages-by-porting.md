@@ -29,7 +29,7 @@ So now that I know what I want to learn with, I have to find out how I'm going t
 
 I used [Dredd](https://github.com/apiaryio/dredd) and the API blueprint syntax. Dredd adds some extra syntax to API blueprint that allows it to parse the blueprint and run actual tests using just the markdown files. Their main goal is to provide a way of making sure that your documentation stays up to date against your API. I can understand them not wanting to let Dredd be the whole kit and caboodle, but in my case it is just so convenient to let Dredd handle multiple test cases per endpoint. The only harm is the wall of warnings from Dredd.
 
-[![Judge Dredd Still Image](images/Judge-Dredd-Still-Image-012-768x461.jpg)](http://chrisgriffing.com/wp-content/uploads/2016/04/Judge-Dredd-Still-Image-012.jpg) Those of you who are unaware, when Dredd gives you a warning, you should usually listen. Maybe a suite of API tests can be an exception.
+[![Judge Dredd Still Image](../images/Judge-Dredd-Still-Image-012-768x461.jpg)](http://chrisgriffing.com/wp-content/uploads/2016/04/Judge-Dredd-Still-Image-012.jpg) Those of you who are unaware, when Dredd gives you a warning, you should usually listen. Maybe a suite of API tests can be an exception.
 
 I have a suite of tests. Now I just need to start rewriting the API in various languages. I will update this post with links to details regarding each of my rewrite adventures. Thanks for reading.
 

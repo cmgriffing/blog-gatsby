@@ -42,7 +42,7 @@ Both of these issues are on the roadmap and have active Github Issues to track t
 
 <a href="https://github.com/angular/angular/issues/16477">
 
-![](images/i18n_plans_for_v4_and_beyond_Issue_16477_angular_angular-768x399.jpg)
+![](../images/i18n_plans_for_v4_and_beyond_Issue_16477_angular_angular-768x399.jpg)
 
 </a>
 

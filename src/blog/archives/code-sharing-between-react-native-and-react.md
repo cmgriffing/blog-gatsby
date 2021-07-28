@@ -174,6 +174,6 @@ With that out of the way, I was able to get back to making something basic work 
 
 ## CORS is standing right behind me, isn't it...?
 
-![right-behind-me](images/right-behind-me.gif) One major selling point of native apps is that they are not bound by CORS issues. Sadly, this is untrue when using the simulator for iOS and Android. Note: I would be so happy if someone tells me I am wrong and I just need to fix a setting somewhere. The quickest way to get the right answer it to loudly proclaim the wrong answer.
+![right-behind-me](../images/right-behind-me.gif) One major selling point of native apps is that they are not bound by CORS issues. Sadly, this is untrue when using the simulator for iOS and Android. Note: I would be so happy if someone tells me I am wrong and I just need to fix a setting somewhere. The quickest way to get the right answer it to loudly proclaim the wrong answer.
 
 At this point I didn't actually have a dev license, so I was a little blocked. I had to wait til I got an android to test with or until my DUNS number was available. And really, I think this is quite enough for one blog post. I'm sure I will have some more things that crop up that others might benefit from hearing about. I will update this post with a link to my continued ramblings when I have had more time to figure things out.

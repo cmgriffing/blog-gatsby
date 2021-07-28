@@ -13,9 +13,9 @@ This was a bit of a let down because I wanted to just start using Eventual and a
 
 After doing that and getting it working, I noticed some strange results in my benchmarks.
 
-Here is one: ![Result Set 1](images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh__and_Desktop-768x215.png)
+Here is one: ![Result Set 1](../images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh__and_Desktop-768x215.png)
 
-Here is another: ![1__cmgriffing_chriss-macbook-pro-3____rust_rust-concurrency-talk__zsh_](images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh_-768x254.png)
+Here is another: ![1__cmgriffing_chriss-macbook-pro-3____rust_rust-concurrency-talk__zsh_](../images/1__cmgriffing_Chriss-MacBook-Pro-3____rust_rust-concurrency-talk__zsh_-768x254.png)
 
 There are some interesting things to notice here. The weirdest I think is that async/await, which is built on top of eventual, is faster than eventual. This could be caused by joining the futures whereas the async/await implementation doesn't do a join under the hood. It could also be due to less allocations.
 
