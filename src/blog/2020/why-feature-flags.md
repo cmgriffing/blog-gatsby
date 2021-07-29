@@ -26,7 +26,7 @@ You are convinced now, right? Cool. So you might ask, "what tools are available?
 - [Split.io](https://split.io)
 - [ConfigCat](https://configcat.com/)
 
-Luckily, there are some open source self-hosted solutions you can use if you want to put in the effort. The nice part is that you these open source projects also have their own hosted solutions so you can start there and migrate to your own self hosting when you are ready.
+Luckily, there are some open source self-hosted solutions you can use if you want to put in the effort. The nice part is that these open source projects also have their own hosted solutions so you can start there and migrate to your own self hosting when you are ready.
 
 - [Flagsmith](https://github.com/Flagsmith/flagsmith)
 - [Unleash](https://github.com/Unleash/unleash)
@@ -37,4 +37,4 @@ I needed something even simpler because I don't want to maintain any servers for
 
 It turns out ConfigCat does something similar. I just found out about them. However, I feel like it is worth working on Vexilla more just because it has been a lot of fun. My favorite part was making the client libraries for various languages. I haven't had a chance to see how language support compares to ConfigCat but that might be something I can focus on to stand out.
 
-![Various pluggable fuses](living-smarter-_ls5G4ewAo8-unsplash.jpg)
+![Various pluggable fuses](../images/living-smarter-_ls5G4ewAo8-unsplash.jpg)
