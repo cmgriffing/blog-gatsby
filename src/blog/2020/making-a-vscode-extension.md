@@ -20,7 +20,7 @@ I don't know what they call the annotations, but I wanted the same kind of funct
 
 Visual Studio Code makes it incredibly easy to customize the functionality of the whole thing. There are even some boilerplates to help get up and running quicker.
 
-One of the nice things is that VSCode includes a Language Server for HTML out of the box so I didn't have to do too much extra dependency bundling. If you are not familiar with the LSP(Language Server Protocol) it is an effort to standardize how all editors can interact with compilers. Many of them expose direct access the Abstract Syntax Tree.
+One of the nice things is that VSCode includes a Language Server for HTML out of the box. So, I didn't have to do too much extra dependency bundling. If you are not familiar with the LSP(Language Server Protocol), it is an effort to standardize how all editors can interact with compilers. Many of them expose direct access the Abstract Syntax Tree.
 
 What this means, is that I can crawl the the entire tree of source code and reference all the awesome metadata that the compiler has access to.
 
@@ -30,13 +30,13 @@ Next, we needed to figure out how to annotate the lines. I figured that the Flut
 
 After that, we just made sure the user can configure the important things about the Biscuits. Their prefix text, max length, minimum block lines, and color. Yes, the prefix supports emoji.
 
-The HTML plugin opened up more ideas. What other languages did we have Language Servers for in VSCode. CSS Biscuits just uses the SCSS language server under the hood. We also have a JS/TS one, but it is the buggiest of the bunch.
+The HTML plugin opened up more ideas. What other languages did we have Language Servers for in VSCode? CSS Biscuits just uses the SCSS language server under the hood. We also have a JS/TS one, but it is the buggiest of the bunch.
 
 ![Multiple cookies in container](../images/mae-mu-kID9sxbJ3BQ-unsplash.jpg)
 
-We ran into some trouble when I tried to do the C# extension. For the life of me, I could not figure out how to get the Language Server working. It could have been missing build tools etc, but if I was bissing them, other people would be too. This needed to be a smooth install process.
+However, we ran into some trouble when I tried to do the C# extension. For the life of me, I could not figure out how to get the Language Server working. It could have been missing build tools etc, but if I was missing them, other people would be too. This needed to be a smooth install process.
 
-A viewer on my stream mentioned Tree Sitter.At first it seemed unrelated because it is at the same level as any other build tool you would need out of the box. However, then we discovered web-tree-sitter, a WASM compiled version of tree sitter itself. Its maintained in the same repo as a sub package.
+A viewer on my stream mentioned Tree Sitter. At first, it seemed unrelated because it's at the same level as any other build tool you would need. However, then we discovered web-tree-sitter, a WASM compiled version of tree sitter itself. Its maintained in the same repo as a sub package.
 
 ![Cookie with bite taken out](../images/carlos-derecichei-FsFeN06h_sQ-unsplash.jpg)
 
@@ -56,6 +56,6 @@ Armed with that, we needed to find "grammars" to allow tree sitter to parse our 
 - TOML
 - YAML
 
-It was a lot of fun and a huge adventure digging into the APIs and tools available for estension developers. I have seen more downloads for HTML biscuits than I ever expected.
+It was a lot of fun and a huge adventure digging into the APIs and tools available for extension developers. I have seen more downloads for HTML biscuits than I ever expected.
 
 ![Slightly broken chef statue giving thumbs up](../images/carlos-derecichei-FsFeN06h_sQ-unsplash.jpg)
