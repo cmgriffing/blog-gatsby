@@ -1,6 +1,6 @@
 ---
 title: "Why Feature Flags?"
-date: "2020-08-21"
+date: "2020-12-17"
 slug: "why-feature-flags"
 coverImage: "../images/steve-johnson-U8XpuqGEO0I-unsplash.jpg"
 ---
