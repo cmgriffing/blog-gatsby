@@ -5,7 +5,7 @@ slug: "this-cellule-life"
 coverImage: "../images/michael-schiffer-13UugSL9q7A-unsplash.jpg"
 ---
 
-TL;DR: We made a Rust/Wasm Game called [CelluleLife](https://cellulelife.github.io/game/).
+We made a Rust/Wasm Game called [CelluleLife](https://cellulelife.github.io/game/).
 
 I have been hearing a lot about WASM lately. In fact, one of my favorite talks ever, [The Birth and Death of Javascript](https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript), predicted all of this. WASI and other things will change the way we think about "Web Technologies".
 

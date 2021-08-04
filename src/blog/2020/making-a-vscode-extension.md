@@ -5,7 +5,7 @@ slug: "have-yourself-a-vscode-biscuit"
 coverImage: "../images/james-lee-4ujY2rb7KOQ-unsplash.jpg"
 ---
 
-TL;DR: We have a series of VSCode plugins that make code easier to read without having to lose your current context.
+We have a series of VSCode plugins that make code easier to read without having to lose your current context.
 
 - Assorted Biscuits [Marketplace](https://marketplace.visualstudio.com/items?itemName=CodeBiscuits.assorted-biscuits) - [Github](https://github.com/code-biscuits/assorted-biscuits)
 - HTML Biscuits [Marketplace](https://marketplace.visualstudio.com/items?itemName=CodeBiscuits.html-biscuits) - [Github](https://github.com/code-biscuits/html-biscuits)
