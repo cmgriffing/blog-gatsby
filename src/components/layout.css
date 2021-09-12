@@ -131,7 +131,8 @@ main {
   }
 }
 
-p {
+p,
+.gatsby-highlight {
   max-width: 540px;
 }
 
