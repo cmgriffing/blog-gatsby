@@ -66,7 +66,7 @@ const ProjectsPage = ({ data }) => {
   const yearlyMetrics = data.yearlyMetrics.edges
 
   const [monthlyViewTotal, setMonthlyViewTotal] = useState(0)
-  const [monthlyUniqueViewTotal, setMonthlyUniqueViewTotal] = useState(0)
+  const [dailyUniqueViewTotal, setdailyUniqueViewTotal] = useState(0)
   const [yearlyViewTotal, setYearlyViewTotal] = useState(0)
   const [averageViewers, setAverageViewers] = useState(0)
 
@@ -79,7 +79,7 @@ const ProjectsPage = ({ data }) => {
       }, 0)
     )
 
-    setMonthlyUniqueViewTotal(
+    setdailyUniqueViewTotal(
       monthlyMetrics.reduce((acc, metric) => {
         return acc + +metric.node.Unique_Viewers
       }, 0) / monthlyMetrics.length
@@ -134,12 +134,8 @@ const ProjectsPage = ({ data }) => {
             />
           </Metric>
           <Metric>
-            <h3>Monthly Unique Viewers</h3>
-            <MetricCounter
-              start={0}
-              end={monthlyUniqueViewTotal}
-              duration={4}
-            />
+            <h3>Daily Unique Viewers</h3>
+            <MetricCounter start={0} end={dailyUniqueViewTotal} duration={4} />
           </Metric>
         </Metrics>
 
