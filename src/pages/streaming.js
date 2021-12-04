@@ -82,7 +82,7 @@ const ProjectsPage = ({ data }) => {
     setMonthlyUniqueViewTotal(
       monthlyMetrics.reduce((acc, metric) => {
         return acc + +metric.node.Unique_Viewers
-      }, 0)
+      }, 0) / monthlyMetrics.length
     )
 
     setAverageViewers(
