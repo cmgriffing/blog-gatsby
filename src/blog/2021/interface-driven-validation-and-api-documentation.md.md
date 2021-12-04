@@ -14,11 +14,11 @@ After narrowing down where my source of truth for validation was going to come f
 
 ![A Stethoscope](../images/photo-1505751172876-fa1923c5c528.jpeg)
 
-I could have just used [stethoscope](https://cmgriffing.github.io/stethoscope) to rate them and zod would have come out ahead anyway. But, the clincher for me was that I could use the zod schema to generate json schema using [zod-to-json-schema](https://github.com/StefanTerdell/zod-to-json-schema). That would allow me generate a significant part of of an openapi.yaml.
+I could have just used [stethoscope](https://cmgriffing.github.io/stethoscope) to rate them and zod would have come out ahead anyway. But, the clincher for me was that I could use the zod schema to generate json schema using [zod-to-json-schema](https://github.com/StefanTerdell/zod-to-json-schema). That would allow me generate a significant part of an openapi.yaml.
 
 It turns out that a lot of the tools regarding OpenApi and generation end up using the openapi.yml file as the source of truth. This didn't really sit well with me.
 
-Keeping API documentation up to date is a hassle. I have come to feel that API documentation that is updated by hand is out of date the moment it is written. We all forget to update them. It can be a chore. So, making it programmatically driven in any way is a boost to productivity and morale. So, something that would also allow me treat my interfaces as the source of truth for the openapi documentation would be awesome.
+Keeping API documentation up to date is a hassle. I have come to feel that API documentation that is updated by hand is out of date the moment it is written. We all forget to update them. It can be a chore. So, making it programmatically driven in any way is a boost to productivity and morale. Something that would also allow me to treat my interfaces as the source of truth for the openapi documentation would be awesome.
 
 ![Spilled Ice Cream](../images/sarah-kilian-52jRtc2S_VE-unsplash.jpg)
 
@@ -26,7 +26,7 @@ There were some options that came close to what I was looking for. However, they
 
 With the plan established, it came time to write some code to glue it all together. Let's take a look at how some of that code looks.
 
-![Unorganized gears](../images/jonathan-borba-xRDuEeG1TVI-unsplash.jpg)
+![Elmer's glue](../images/scott-sanker-IDaeLeKiie0-unsplash.jpg)
 
 First, we have an interface for a request that we want to accept in an api endpoint:
 
@@ -44,7 +44,7 @@ Next we end up running ts-to-node from the command line (or in your package.json
 ts-to-zod src/shared/request-types.ts src/shared/request-schema.ts
 ```
 
-This would give us something like this:
+This would give us a zod schema that looks like this:
 
 ```typescript
 // request-schema.ts
@@ -54,7 +54,7 @@ export const postPollRequestSchema = z.object({
 })
 ```
 
-Then we have to run zod-to-json-schema. It turns out it doesn't have a cli utility so we end up writing a quick little script that we can run with ts-node:
+Then, we have to run zod-to-json-schema. It turns out it doesn't have a cli utility so we end up writing a quick little script that we can run with ts-node:
 
 ```typescript
 import zodToJsonSchema from "zod-to-json-schema"
@@ -71,7 +71,7 @@ Object.entries(requestSchemas).forEach(([key, requestSchema]) => {
 })
 ```
 
-And we end up with something like this:
+We get a clean and polished OpenApi schema object. No hand editing involved.:
 
 ```json
 {
@@ -96,7 +96,7 @@ And we end up with something like this:
 
 ![Gears meshed together properly](../images/josh-redd-u_RiRTA_TtY-unsplash.jpg)
 
-That schema is not quite enough to generate an entire openapi.yml file. We need route data and some metadata for the API itself. I spent some time digging into how TSOA does things and it turns out they are using some noop Decorators in Typescript. They don't actually do anything at runtime, but they do get parsed at build time by passing the source file to the typescript library.
+That schema is not quite enough to generate an entire openapi.yml file. We need route data and some metadata for the API itself. This includes path and possible responses mapped to status codes. I spent some time digging into how TSOA does things and it turns out they are using some noop Decorators in Typescript. They don't actually do anything at runtime, but they do get parsed at build time by passing the source file to the typescript library.
 
 I won't show the whole script here but you can see the source code over at this Github repo: [https://github.com/cmgriffing/ts-driven-docs-example](https://github.com/cmgriffing/ts-driven-docs-example). It goes and parses out the metadata from the route file and it looks something like this:
 
@@ -119,6 +119,4 @@ class Handler {
     // ...
 ```
 
-When it is all said and done, we get a solid openapi.yml. It doesn't have everything we need yet since this is all just proof of concept. However, I plan on polishing it a bit more and hopefully turning it into a library I can reuse. Overall, it was a cool process gluing all these things together and I hope that you can find a use for it too. Thanks for reading.
-
-![Elmer's glue](../images/scott-sanker-IDaeLeKiie0-unsplash.jpg)
+When it is all said and done, we get a solid openapi.yml. It doesn't have everything we need yet since this is all just proof of concept. However, I plan on polishing it a bit more and hopefully turning it into a library I can reuse. Overall, it was a cool process gluing all these things together and I hope that you can find a use for it too.
