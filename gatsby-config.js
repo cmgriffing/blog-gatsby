@@ -79,6 +79,12 @@ module.exports = {
             options: {},
           },
           `gatsby-plugin-open-graph-images`,
+          {
+            resolve: `gatsby-plugin-plausible`,
+            options: {
+              domain: `chrisgriffing.com`,
+            },
+          },
         ],
       },
     },
