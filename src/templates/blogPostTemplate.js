@@ -126,6 +126,7 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
+            description
             date
             slug
           }
