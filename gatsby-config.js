@@ -78,12 +78,6 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {},
           },
-          {
-            resolve: `gatsby-plugin-plausible`,
-            options: {
-              domain: `chrisgriffing.com`,
-            },
-          },
         ],
       },
     },
@@ -147,5 +141,11 @@ module.exports = {
       },
     },
     `gatsby-transformer-csv`,
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `chrisgriffing.com`,
+      },
+    },
   ],
 }

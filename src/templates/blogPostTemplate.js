@@ -39,7 +39,7 @@ export default function Template({
         <meta property="og:description" content={frontmatter.description} />
         <meta
           property="og:image"
-          content={frontmatter.coverImage.childImageSharp.fixed.src}
+          content={frontmatter.coverImage.childImageSharp.og.src}
         />
         <meta
           property="og:url"
@@ -104,6 +104,9 @@ export const pageQuery = graphql`
               dataURI
             }
             fixed(width: 1200, height: 250, fit: COVER, cropFocus: CENTER) {
+              ...GatsbyImageSharpFixed
+            }
+            og: fixed(width: 1200, height: 600, fit: COVER, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
