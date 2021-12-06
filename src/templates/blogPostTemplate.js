@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import breakpoints from "../config/breakpoints"
+import { Helmet } from "react-helmet"
 
 const PostImage = styled(Img)`
   width: 100% !important;
