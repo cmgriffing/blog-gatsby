@@ -3,6 +3,7 @@ title: "Porting nanostores to lua"
 date: "2021-09-12"
 slug: "porting-nanostores-to-lua"
 coverImage: "../images/kobby-mendez-d0oYF8hm4GI-unsplash.jpg"
+description: "I was working on a project in Lua and Solar2d. It needed to maintain state from page to page. I didn't find anything that seemed like a good fit on luarocks, so I ported nanostores to Lua. (not by hand)"
 ---
 
 I needed a state management library in lua. I didn't find what I was looking for, so I decided to port something. TypeScriptToLua made it really easy to make an automated nanostores port for lua.

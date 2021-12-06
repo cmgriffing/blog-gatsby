@@ -32,6 +32,20 @@ export default function Template({
   return (
     <Layout>
       <SEO></SEO>
+      <Helmet>
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content={frontmatter.description} />
+        <meta
+          property="og:image"
+          content={frontmatter.coverImage.childImageSharp.fixed.src}
+        />
+        <meta
+          property="og:url"
+          content={`https://chrisgriffing.com/blog/${frontmatter.slug}`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <div className="page-content with-sidebar">
         <h2>{frontmatter.title}</h2>
         <h3>{frontmatter.date}</h3>

@@ -3,6 +3,7 @@ title: "This Cellule Life"
 date: "2020-08-21"
 slug: "this-cellule-life"
 coverImage: "../images/michael-schiffer-13UugSL9q7A-unsplash.jpg"
+description: "Using Rust and a WASM based framework called Yew, we were able to make a fun interpretation of Conway's Game of Life. Rust allowed me to write performant code without having to think about it too hard. When in doubt, clone it out."
 ---
 
 We made a Rust/Wasm Game called [CelluleLife](https://cellulelife.github.io/game/).

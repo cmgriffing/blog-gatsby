@@ -78,6 +78,7 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {},
           },
+          `gatsby-plugin-open-graph-images`,
         ],
       },
     },

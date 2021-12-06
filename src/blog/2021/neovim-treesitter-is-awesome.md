@@ -3,6 +3,7 @@ title: "neovim-treesitter is Awesome"
 date: "2021-03-12"
 slug: "neovim-treesitter-is-awesome"
 coverImage: "../images/aaron-burden-b9drVB7xIOI-unsplash.jpg"
+description: "Code Biscuits are awesome. They help me navigate deeply nested HTML all the time. But it was only for VSCode, until now. Using tree-sitter, we get so much power and neovim supports tree-sitter with little effort."
 ---
 
 Code Biscuits was so much fun to work on and I use it every day. I hope other people feel the same. The tool that made Assorted Biscuits possible, Tree Sitter, ends up being really well utilized in neovim as well. Neovim has a deep API to allow extensions and Tree Sitter with it was no different.

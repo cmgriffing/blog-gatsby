@@ -3,6 +3,7 @@ title: "Why Feature Flags?"
 date: "2020-12-17"
 slug: "why-feature-flags"
 coverImage: "../images/steve-johnson-U8XpuqGEO0I-unsplash.jpg"
+description: "Feature flags allow us to change how an app behaves without having to redeploy. That decoupling is powerful and lets us iterate quickly."
 ---
 
 Feature flags are a great way to decouple feature releases from your deploy. You can deploy on a schedule or on the fly throughout the day. It won't matter. Whenever you want to turn on that one feature, you just go and update and your apps handle it at runtime.

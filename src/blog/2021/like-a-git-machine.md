@@ -3,6 +3,7 @@ title: "Like a Git Machine"
 date: "2021-04-01"
 slug: "like-a-git-machine"
 coverImage: "../images/music-hq-uSNXqaRWFng-unsplash.jpg"
+description: "Just git on up with the funkiest git commands around. Feel free to git on down as well. Ain't it funky?!"
 ---
 
 Do you ever find yourself stuck in the monotony of "git status", "git commit", blah, blah, blah? I just got tired typing that out. There has to be a better way.

@@ -3,6 +3,7 @@ title: "Have yourself a VSCode Biscuit"
 date: "2020-09-27"
 slug: "have-yourself-a-vscode-biscuit"
 coverImage: "../images/james-lee-4ujY2rb7KOQ-unsplash.jpg"
+description: "The Flutter plugin for VSCode gives some awesome annotations to ending brackets. I wanted that same functionality for HTML. Using the built-in html language server, we were able to make it happen."
 ---
 
 We have a series of VSCode plugins that make code easier to read without having to lose your current context.

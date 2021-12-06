@@ -3,6 +3,7 @@ title: "Interface Driven Validation and API Documentation for Typescript"
 date: "2021-11-29"
 slug: "interface-driven-validation-and-api-documentation"
 coverImage: "../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg"
+description: "Recently, I wanted to create request validators and OpenAPI documentation from my TypeScript interfaces. This is journey into what that (unfinished) process looks like."
 ---
 
 I was working on a project recently where I wanted to have my request bodies validated at a middleware level. There are a number of ways to do this. This time I wanted to make it interface driven.
