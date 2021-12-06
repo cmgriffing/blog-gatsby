@@ -39,11 +39,11 @@ export default function Template({
         <meta property="og:description" content={frontmatter.description} />
         <meta
           property="og:image"
-          content={frontmatter.coverImage.childImageSharp.og.src}
+          content={`https://chrisgriffing.com${frontmatter.coverImage.childImageSharp.og.src}`}
         />
         <meta
           name="twitter:image"
-          content={frontmatter.coverImage.childImageSharp.og.src}
+          content={`https://chrisgriffing.com${frontmatter.coverImage.childImageSharp.og.src}`}
         />
         <meta
           property="og:url"
