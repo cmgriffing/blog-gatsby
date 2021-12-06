@@ -42,6 +42,10 @@ export default function Template({
           content={frontmatter.coverImage.childImageSharp.og.src}
         />
         <meta
+          name="twitter:image"
+          content={frontmatter.coverImage.childImageSharp.og.src}
+        />
+        <meta
           property="og:url"
           content={`https://chrisgriffing.com/blog/${frontmatter.slug}`}
         />
