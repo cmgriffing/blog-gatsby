@@ -105,7 +105,6 @@ const StreamingLink = styled(Link)`
 `
 
 const Sidebar = ({
-  children,
   otherPosts,
   data,
   showProjectsBlock,
@@ -152,7 +151,7 @@ const Sidebar = ({
               {data.projects.edges.map(post => {
                 const { slug, title } = post.node.frontmatter
                 return (
-                  <PostListItem>
+                  <PostListItem key={slug}>
                     <PostLink to={`/projects/${slug}`}>
                       <PostTitle>{title}</PostTitle>
                     </PostLink>
@@ -168,7 +167,7 @@ const Sidebar = ({
           {otherPosts.map(post => {
             const { slug, title } = post.node.frontmatter
             return (
-              <PostListItem>
+              <PostListItem key={slug}>
                 <PostLink to={`/blog/${slug}`}>
                   <PostTitle>{title}</PostTitle>
                 </PostLink>
@@ -182,7 +181,6 @@ const Sidebar = ({
 }
 
 Sidebar.propTypes = {
-  children: PropTypes.node.isRequired,
   otherPosts: PropTypes.array.isRequired,
   data: PropTypes.object.isRequired,
   showProjectsBlock: PropTypes.bool,

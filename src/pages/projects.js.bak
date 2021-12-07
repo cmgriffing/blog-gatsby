@@ -223,6 +223,7 @@ const ProjectsPage = ({ data }) => {
               <ProjectListItem
                 span={size}
                 className={"item " + frontmatter.labels.join(" ")}
+                key={slug}
               >
                 <ProjectLink to={path}>
                   <ProjectImageWrapper>

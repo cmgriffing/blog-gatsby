@@ -112,7 +112,7 @@ const IndexPage = ({ data }) => {
             const path = `blog/${slug}`
 
             return (
-              <PostListItem>
+              <PostListItem key={slug}>
                 <PostLink to={path}>
                   <PostImageWrapper>
                     <Img

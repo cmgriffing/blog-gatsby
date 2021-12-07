@@ -32,7 +32,7 @@ export default function Template({
 
   return (
     <Layout>
-      <SEO></SEO>
+      <SEO title={frontmatter.title}></SEO>
       <Helmet>
         <meta property="og:title" content={frontmatter.title} />
         <meta property="og:type" content="article" />
@@ -96,6 +96,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        description
         coverImage {
           childImageSharp {
             sqip(
@@ -126,7 +127,6 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            description
             date
             slug
           }
