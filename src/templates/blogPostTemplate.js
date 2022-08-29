@@ -7,6 +7,7 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import breakpoints from "../config/breakpoints"
 import { Helmet } from "react-helmet"
+import "../styles/collapsible-code.css"
 
 const PostImage = styled(Img)`
   width: 100% !important;
@@ -27,8 +28,8 @@ const PostImage = styled(Img)`
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark, otherPosts } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { blogPost, otherPosts } = data
+  const { frontmatter, html } = blogPost
 
   return (
     <Layout>
@@ -90,7 +91,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    blogPost: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

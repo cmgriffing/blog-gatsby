@@ -1,0 +1,269 @@
+---
+title: "Quirks when composing Pinia stores"
+date: "2022-01-21"
+slug: "quirks-when-composing-pinia-stores"
+coverImage: "../images/2022/quirks-when-composing-pinia-stores/brooke-lark-3A1etBW5cBk-unsplash.jpg"
+description: "I had a very specific use case where I wanted my Pinia stores to have a dependency between them. The Axios instances needed the auth tokens. Pinia has a section in their docs about composing stores in Vue. However, I ran into a strange issue."
+---
+
+Vue3 is the latest and greatest version of Vue JS. In fact, Vue 2.7 is End-of-life as of the end of 2023. Pinia is the new blessed state management framework supplanting Vuex. So, basically, if you currently use Vue 2.x and Vuex, you probably want to start thinking about migrating. Pinia works great with Vue's Composition API. Another cool feature that might surprise some React users is that this state does not have to live at the root of your component. You can subscribe to state almost anywhere. However, I had a very specific case that failed out.
+
+## My use case
+
+In my app, I am using Pinia to store the user's token to localStorage. From there, I need to make sure Axios uses that token state for auth when hitting my API. This happens in a couple ways. First, I need to make sure I send the token as an Auth header. Secondly, if an API request comes back with a 401 error, I need to clear the token storage and redirect the user to the login page. I really wanted to try and reduce boilerplate. So, I wanted to make one Pinia store depend on another and so the story begins.
+
+## Original code
+
+My first instinct was to make the `$axios` store set its headers and interceptors based upon the Auth state changing. I will show the snippets but the gist is that, when I set the new token, I loaded in the axios store and called a method on it that did the magic inside of the Axios store.
+
+I'm going to paste the whole stores just to make sure there is nothing left out.
+
+```typescript
+// auth.ts
+import { defineStore } from "pinia";
+import { StoreName } from "~~/types/store";
+import { useAxios } from "./original-axios";
+
+export const useAuth = defineStore(StoreName.Auth, {
+  state: () => {
+    const $axios = useAxios();
+
+    let state = {
+      authToken: "",
+      twitchToken: "",
+    };
+
+    try {
+      state = JSON.parse(localStorage.getItem("auth") || "");
+    } catch (e: any) {}
+
+    $axios.setAuthToken(state.authToken);
+    $axios.setTwitchToken(state.twitchToken);
+
+    return state;
+  },
+  actions: {
+    setAuthToken(token: string) {
+      const $axios = useAxios();
+      this.authToken = token;
+      $axios.setAuthToken(token);
+    },
+    setTwitchToken(token: string) {
+      const $axios = useAxios();
+      this.twitchToken = token;
+      $axios.setTwitchToken(token);
+    },
+  },
+});
+```
+
+```typescript
+// axios.ts
+
+import { defineStore } from "pinia";
+import { StoreName } from "~~/types/store";
+import Axios, { AxiosInstance, AxiosError } from "axios";
+
+const defaultConfig = { baseURL: "/api" };
+const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" };
+
+export const useAxios = defineStore(StoreName.Axios, {
+  state: () => {
+    return {
+      unauthenticated: Axios.create(defaultConfig),
+      authenticated: Axios.create(defaultConfig),
+      twitch: Axios.create(defaultTwitchConfig),
+      external: Axios.create(),
+    };
+  },
+  getters: {
+    getAxios: (state) => {
+      return state.unauthenticated;
+    },
+  },
+  actions: {
+    setAuthToken(token: string) {
+      const newAxios = Axios.create(defaultConfig);
+      const router = useRouter();
+
+      console.log("setting token for authenticated axios", token);
+
+      newAxios.interceptors.request.use(function (request) {
+        request.headers = {
+          Authorization: `Bearer ${token}`,
+        };
+
+        return request;
+      });
+
+      newAxios.interceptors.response.use(
+        function (response) {
+          return response;
+        },
+        function (error: AxiosError) {
+          if (!error.response || error.response?.status === 401) {
+            router.push("/logged-out");
+          }
+        }
+      );
+
+      this.authenticated = newAxios;
+    },
+    setTwitchToken(token: string) {
+      const newAxios = Axios.create(defaultTwitchConfig);
+      const router = useRouter();
+      const { TWITCH_CLIENT_ID } = useRuntimeConfig();
+
+      newAxios.interceptors.request.use(function (request) {
+        request.headers = {
+          Authorization: `Bearer ${token}`,
+          "Client-ID": TWITCH_CLIENT_ID,
+        };
+        return request;
+      });
+
+      newAxios.interceptors.response.use(
+        function (response) {
+          return response;
+        },
+        function (error: AxiosError) {
+          if (!error.response || error.response?.status === 401) {
+            router.push("/logged-out");
+          }
+        }
+      );
+
+      this.twitch = newAxios;
+    },
+  },
+});
+
+```
+
+## Issue it caused (onMounted only)
+
+
+
+## Inverting the dependency
+
+I sat and debugged that for a bit before I understood what was happening (a little). For the most part, I just had to invert how I thought about the dependencies.
+
+## Working code
+
+It turns out that it greatly simplifies the Auth store.
+
+```typescript
+// auth.ts
+
+import { defineStore } from "pinia";
+import { StoreName } from "~~/types/store";
+
+export const useAuth = defineStore(StoreName.Auth, {
+  state: () => {
+    let state = {
+      authToken: "",
+      twitchToken: "",
+    };
+
+    try {
+      state = JSON.parse(localStorage.getItem("auth") || "");
+    } catch (e: any) {}
+
+    return state;
+  },
+  actions: {
+    setAuthToken(token: string) {
+      this.authToken = token;
+    },
+    setTwitchToken(token: string) {
+      this.twitchToken = token;
+    },
+  },
+});
+```
+
+The Axios store actually isn't much more verbose than the original version, which I consider a win.
+
+```typescript
+// axios.ts
+
+import { useAuth } from "./original-auth";
+import { defineStore } from "pinia";
+import { StoreName } from "~~/types/store";
+import Axios, { AxiosInstance, AxiosError } from "axios";
+
+const defaultConfig = { baseURL: "/api" };
+const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" };
+
+export const useAxios = defineStore(StoreName.Axios, {
+  state: () => {
+    return {
+      unauthenticated: Axios.create(defaultConfig),
+      external: Axios.create(),
+    };
+  },
+  getters: {
+    authenticated: (state) => {
+      const $auth = useAuth();
+
+      const newAxios = Axios.create(defaultConfig);
+      const router = useRouter();
+
+      console.log("setting token for authenticated axios", $auth.authToken);
+
+      newAxios.interceptors.request.use(function (request) {
+        request.headers = {
+          Authorization: `Bearer ${$auth.authToken}`,
+        };
+
+        return request;
+      });
+
+      newAxios.interceptors.response.use(
+        function (response) {
+          return response;
+        },
+        function (error: AxiosError) {
+          if (!error.response || error.response?.status === 401) {
+            router.push("/logged-out");
+          }
+        }
+      );
+
+      return newAxios;
+    },
+    twitch(state) {
+      const $auth = useAuth();
+
+      const newAxios = Axios.create(defaultTwitchConfig);
+      const router = useRouter();
+      const { TWITCH_CLIENT_ID } = useRuntimeConfig();
+
+      newAxios.interceptors.request.use(function (request) {
+        request.headers = {
+          Authorization: `Bearer ${$auth.twitchToken}`,
+          "Client-ID": TWITCH_CLIENT_ID,
+        };
+        return request;
+      });
+
+      newAxios.interceptors.response.use(
+        function (response) {
+          return response;
+        },
+        function (error: AxiosError) {
+          if (!error.response || error.response?.status === 401) {
+            router.push("/logged-out");
+          }
+        }
+      );
+
+      return newAxios;
+    },
+  },
+});
+```
+
+## Wrapping Up
+
+So this "fix" works, but I do have to think about the implication. I end up creating an Axios instance in every place I need to use it. Luckily, this really only happens when a page level component is instantiated. If this were happening on every render, I would heavily reconsider my approach. But, I don't, so, I don't. All in all, it was a fun excursion, though, and I got things working, which is nice.

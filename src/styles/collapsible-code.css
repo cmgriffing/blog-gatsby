@@ -1,0 +1,54 @@
+.collapsible-code-block {
+}
+
+.collapsible-code-checkbox {
+}
+
+.collapsible-code {
+  max-height: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.collapsible-code pre[class*="language-"] {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.collapsible-code-checkbox:checked ~ .collapsible-code {
+  height: auto;
+  max-height: initial;
+  overflow: initial;
+}
+
+.collapsible-code-toggle {
+  max-width: 540px;
+  display: block;
+  background: hsl(0, 0%, 33%);
+  text-align: center;
+  margin-bottom: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  color: white;
+  padding: 4px 0 6px;
+}
+
+.collapsible-code-toggle-show {
+}
+
+.collapsible-code-toggle-hide {
+  display: none;
+}
+
+.collapsible-code-checkbox:checked
+  ~ .collapsible-code-toggle
+  .collapsible-code-toggle-show {
+  display: none;
+}
+
+.collapsible-code-checkbox:checked
+  ~ .collapsible-code-toggle
+  .collapsible-code-toggle-hide {
+  display: block;
+}
