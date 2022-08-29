@@ -5,6 +5,28 @@ module.exports = {
     author: `@cmgriffing`,
   },
   plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {},
+          },
+          "gatsby-remark-collapsible-code",
+          // "gatsby-remark-purple-headers",
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -34,7 +56,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-sqip`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-source-name`,
+    // `gatsby-remark-source-name`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,26 +81,6 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/projects/images`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {},
-          },
-        ],
       },
     },
     {
