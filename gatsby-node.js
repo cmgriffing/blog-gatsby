@@ -48,19 +48,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  function slugify(text) {
-    return text
-      .toString()
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, "-") // Replace spaces with -
-      .replace(/&/g, "-and-") // Replace & with 'and'
-      .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-      .replace(/\-\-+/g, "-")
-  }
-
   // Handle errors
   if (result.errors) {
+    console.log("Gatsby-node Errors: ", result.errors)
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }

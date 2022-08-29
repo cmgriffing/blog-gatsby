@@ -1,12 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import { Helmet } from "react-helmet"
+
+import styled from "styled-components"
 import Layout from "../components/layout"
 import Sidebar from "../components/sidebar"
 import SEO from "../components/seo"
-import styled from "styled-components"
-import Img from "gatsby-image"
 import breakpoints from "../config/breakpoints"
-import { Helmet } from "react-helmet"
+
 import "../styles/collapsible-code.css"
 
 const PostImage = styled(Img)`

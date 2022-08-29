@@ -20,52 +20,52 @@ I'm going to paste the whole stores just to make sure there is nothing left out.
 
 ```typescript
 // auth.ts
-import { defineStore } from "pinia";
-import { StoreName } from "~~/types/store";
-import { useAxios } from "./original-axios";
+import { defineStore } from "pinia"
+import { StoreName } from "~~/types/store"
+import { useAxios } from "./original-axios"
 
 export const useAuth = defineStore(StoreName.Auth, {
   state: () => {
-    const $axios = useAxios();
+    const $axios = useAxios()
 
     let state = {
       authToken: "",
       twitchToken: "",
-    };
+    }
 
     try {
-      state = JSON.parse(localStorage.getItem("auth") || "");
-    } catch (e: any) {}
+      state = JSON.parse(localStorage.getItem("auth") || "")
+    } catch (e) {}
 
-    $axios.setAuthToken(state.authToken);
-    $axios.setTwitchToken(state.twitchToken);
+    $axios.setAuthToken(state.authToken)
+    $axios.setTwitchToken(state.twitchToken)
 
-    return state;
+    return state
   },
   actions: {
     setAuthToken(token: string) {
-      const $axios = useAxios();
-      this.authToken = token;
-      $axios.setAuthToken(token);
+      const $axios = useAxios()
+      this.authToken = token
+      $axios.setAuthToken(token)
     },
     setTwitchToken(token: string) {
-      const $axios = useAxios();
-      this.twitchToken = token;
-      $axios.setTwitchToken(token);
+      const $axios = useAxios()
+      this.twitchToken = token
+      $axios.setTwitchToken(token)
     },
   },
-});
+})
 ```
 
 ```typescript
 // axios.ts
 
-import { defineStore } from "pinia";
-import { StoreName } from "~~/types/store";
-import Axios, { AxiosInstance, AxiosError } from "axios";
+import { defineStore } from "pinia"
+import { StoreName } from "~~/types/store"
+import Axios, { AxiosInstance, AxiosError } from "axios"
 
-const defaultConfig = { baseURL: "/api" };
-const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" };
+const defaultConfig = { baseURL: "/api" }
+const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" }
 
 export const useAxios = defineStore(StoreName.Axios, {
   state: () => {
@@ -74,75 +74,72 @@ export const useAxios = defineStore(StoreName.Axios, {
       authenticated: Axios.create(defaultConfig),
       twitch: Axios.create(defaultTwitchConfig),
       external: Axios.create(),
-    };
+    }
   },
   getters: {
-    getAxios: (state) => {
-      return state.unauthenticated;
+    getAxios: state => {
+      return state.unauthenticated
     },
   },
   actions: {
     setAuthToken(token: string) {
-      const newAxios = Axios.create(defaultConfig);
-      const router = useRouter();
+      const newAxios = Axios.create(defaultConfig)
+      const router = useRouter()
 
-      console.log("setting token for authenticated axios", token);
+      console.log("setting token for authenticated axios", token)
 
       newAxios.interceptors.request.use(function (request) {
         request.headers = {
           Authorization: `Bearer ${token}`,
-        };
+        }
 
-        return request;
-      });
+        return request
+      })
 
       newAxios.interceptors.response.use(
         function (response) {
-          return response;
+          return response
         },
         function (error: AxiosError) {
           if (!error.response || error.response?.status === 401) {
-            router.push("/logged-out");
+            router.push("/logged-out")
           }
         }
-      );
+      )
 
-      this.authenticated = newAxios;
+      this.authenticated = newAxios
     },
     setTwitchToken(token: string) {
-      const newAxios = Axios.create(defaultTwitchConfig);
-      const router = useRouter();
-      const { TWITCH_CLIENT_ID } = useRuntimeConfig();
+      const newAxios = Axios.create(defaultTwitchConfig)
+      const router = useRouter()
+      const { TWITCH_CLIENT_ID } = useRuntimeConfig()
 
       newAxios.interceptors.request.use(function (request) {
         request.headers = {
           Authorization: `Bearer ${token}`,
           "Client-ID": TWITCH_CLIENT_ID,
-        };
-        return request;
-      });
+        }
+        return request
+      })
 
       newAxios.interceptors.response.use(
         function (response) {
-          return response;
+          return response
         },
         function (error: AxiosError) {
           if (!error.response || error.response?.status === 401) {
-            router.push("/logged-out");
+            router.push("/logged-out")
           }
         }
-      );
+      )
 
-      this.twitch = newAxios;
+      this.twitch = newAxios
     },
   },
-});
-
+})
 ```
 
 ## Issue it caused (onMounted only)
-
-
 
 ## Inverting the dependency
 
@@ -155,31 +152,31 @@ It turns out that it greatly simplifies the Auth store.
 ```typescript
 // auth.ts
 
-import { defineStore } from "pinia";
-import { StoreName } from "~~/types/store";
+import { defineStore } from "pinia"
+import { StoreName } from "~~/types/store"
 
 export const useAuth = defineStore(StoreName.Auth, {
   state: () => {
     let state = {
       authToken: "",
       twitchToken: "",
-    };
+    }
 
     try {
-      state = JSON.parse(localStorage.getItem("auth") || "");
-    } catch (e: any) {}
+      state = JSON.parse(localStorage.getItem("auth") || "")
+    } catch (e) {}
 
-    return state;
+    return state
   },
   actions: {
     setAuthToken(token: string) {
-      this.authToken = token;
+      this.authToken = token
     },
     setTwitchToken(token: string) {
-      this.twitchToken = token;
+      this.twitchToken = token
     },
   },
-});
+})
 ```
 
 The Axios store actually isn't much more verbose than the original version, which I consider a win.
@@ -187,81 +184,81 @@ The Axios store actually isn't much more verbose than the original version, whic
 ```typescript
 // axios.ts
 
-import { useAuth } from "./original-auth";
-import { defineStore } from "pinia";
-import { StoreName } from "~~/types/store";
-import Axios, { AxiosInstance, AxiosError } from "axios";
+import { useAuth } from "./original-auth"
+import { defineStore } from "pinia"
+import { StoreName } from "~~/types/store"
+import Axios, { AxiosInstance, AxiosError } from "axios"
 
-const defaultConfig = { baseURL: "/api" };
-const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" };
+const defaultConfig = { baseURL: "/api" }
+const defaultTwitchConfig = { baseURL: "https://api.twitch.tv" }
 
 export const useAxios = defineStore(StoreName.Axios, {
   state: () => {
     return {
       unauthenticated: Axios.create(defaultConfig),
       external: Axios.create(),
-    };
+    }
   },
   getters: {
-    authenticated: (state) => {
-      const $auth = useAuth();
+    authenticated: state => {
+      const $auth = useAuth()
 
-      const newAxios = Axios.create(defaultConfig);
-      const router = useRouter();
+      const newAxios = Axios.create(defaultConfig)
+      const router = useRouter()
 
-      console.log("setting token for authenticated axios", $auth.authToken);
+      console.log("setting token for authenticated axios", $auth.authToken)
 
       newAxios.interceptors.request.use(function (request) {
         request.headers = {
           Authorization: `Bearer ${$auth.authToken}`,
-        };
+        }
 
-        return request;
-      });
+        return request
+      })
 
       newAxios.interceptors.response.use(
         function (response) {
-          return response;
+          return response
         },
         function (error: AxiosError) {
           if (!error.response || error.response?.status === 401) {
-            router.push("/logged-out");
+            router.push("/logged-out")
           }
         }
-      );
+      )
 
-      return newAxios;
+      return newAxios
     },
     twitch(state) {
-      const $auth = useAuth();
+      const $auth = useAuth()
 
-      const newAxios = Axios.create(defaultTwitchConfig);
-      const router = useRouter();
-      const { TWITCH_CLIENT_ID } = useRuntimeConfig();
+      const newAxios = Axios.create(defaultTwitchConfig)
+      const router = useRouter()
+      const { TWITCH_CLIENT_ID } = useRuntimeConfig()
 
       newAxios.interceptors.request.use(function (request) {
         request.headers = {
           Authorization: `Bearer ${$auth.twitchToken}`,
           "Client-ID": TWITCH_CLIENT_ID,
-        };
-        return request;
-      });
+        }
+        return request
+      })
 
       newAxios.interceptors.response.use(
         function (response) {
-          return response;
+          return response
         },
         function (error: AxiosError) {
           if (!error.response || error.response?.status === 401) {
-            router.push("/logged-out");
+            router.push("/logged-out")
           }
         }
-      );
+      )
 
-      return newAxios;
+      return newAxios
     },
   },
-});
+})
 ```
 
 ## Wrapping Up

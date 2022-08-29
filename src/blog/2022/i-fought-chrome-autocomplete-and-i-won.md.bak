@@ -1,0 +1,21 @@
+---
+title: "I Fought Chrome Autocomplete and I won"
+date: "2021-09-12"
+slug: "i-gouht-chrome-autocomplete-and-i-won"
+coverImage: "../images/kobby-mendez-d0oYF8hm4GI-unsplash.jpg"
+description: "Chrome has a few quirks with how it likes to handle autocompleting text and password inputs. It doesn't trust developers to make the right choice. Is that our fault? No, Chrome is the problem."
+---
+
+Chrome doesn't trust developers to make the right decisions regarding usernam/password inputs. I get it. However, I ran into an issue with it trying to autocomplete fields within the dashboard of an application I was making. These were public and secret keys for Stripe. They were NOT the login fields for the app itself, but Chrome totally thought they were.
+
+## Examples of it being broken
+
+Basically, any normal input next to a password input will trigger Chrome to try and do the right thing. In an application, this is most likely not the right thing. I needed to allow users to input a Stripe Publishable key and a Stripe Secret Key. Chrome autofilled the user's email and password instead.
+
+## Things we tried
+
+I looked at this stackoverflow post for guidance: [https://stackoverflow.com/questions/15738259/disabling-chrome-autofill](https://stackoverflow.com/questions/15738259/disabling-chrome-autofill) and it didn't actually help. Chrome, at the time of this writing, ignores the autocomplete field.
+
+## The hack
+
+## Wrapping Up
