@@ -111,8 +111,6 @@ main {
   flex-wrap: wrap;
 }
 
-/* .page-content { } */
-
 .page-content.with-sidebar {
   width: 100%;
 }
@@ -132,8 +130,18 @@ main {
 }
 
 p,
-.gatsby-highlight {
+.gatsby-highlight,
+.blog-post-content li,
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4 {
   max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-post-content li {
+  max-width: 480px;
 }
 
 /* @import "../../static/prismjs/themes/prism.css"; */

@@ -118,7 +118,7 @@ const IndexPage = ({ data }) => {
                     <Img
                       fluid={{
                         ...coverImage.childImageSharp.fluid,
-                        base64: coverImage.childImageSharp.sqip.dataURI,
+                        base64: coverImage.childImageSharp?.sqip?.dataURI,
                       }}
                     />
                   </PostImageWrapper>

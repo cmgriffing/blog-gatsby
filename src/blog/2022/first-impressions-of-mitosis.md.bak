@@ -1,0 +1,128 @@
+---
+title: "First Impressions of Mitosis"
+date: "2022-09-28"
+slug: "first-impressions-of-mitosis"
+coverImage: "../images/2022/first-impressions-of-mitosis/michael-x8Yr3WNs5Jo-unsplash.jpg"
+description: "The general idea behind Mitosis by the builder.io team is very promising. Write once, compile to anywhere. It's still a bit early for broad adoption, but with a little bit of effort you can get some great results."
+---
+
+Mitosis is a tool that aims to create components for various frameworks from an initial baseline. That baseline is a Mitosis component that gets parsed into a JSON structure. That JSON structure can then be traversed to create components for specific frameworks. Mitosis calls these parsers, generators.
+
+The baseline looks a lot like React code. It ends up needing several of its own custom mechanisms that can then be converted at build time. Some of these include:
+
+- `<Show when={condition === true}>`
+
+  - This is used to compile into something similar to an ngIf, v-if, etc.
+
+- `<For each={state.myArray}>{(theArrayItem, index) =>`
+
+  - Just like `Show`, Mitosis needs to provide a custom way of looping over things so that it can port them into each framework that might have its own looping mechanisms. (Angular, Vue, etc)
+
+- `useStore`
+
+  - This is used to wire up component state. Not all frameworks (Angular, Svelte) have the exact `useState` type mechanisms for component state as other frameworks (React, etc). So, this fills in the blanks.
+
+![Cell splitting under microscope](../images/2022/first-impressions-of-mitosis/national-cancer-institute-nn4Sg-UFgsE-unsplash.jpg)
+
+## First porting attempt (novu/notification-center)
+
+I was initially looking for something like Mitosis so that I could investigate a broader scope for [novu's](https://novu.co) Notification Center component/sdk. It's a React component/sdk and they have several open issues regarding other framework support. I had already looked at Stencil and determined it couldn't work because Novu has significant usage of Context.
+
+React, Solid, and possibly other frameworks are fine with a Context. But the Vue and Angular output don't support it, yet. I have some ideas about how Context could be supported in Angular using Services since most of my professional career has involved Angular. However, that kind of contribution/work is out of scope for an initial analysis.
+
+## The library we ended up porting (boring-avatars)
+
+I switched to porting a different library to understand the capabilities of Mitosis more. Boring Avatars is an awesome React library for creating user-specific placeholder images until the user has uploaded their own. It has ZERO context to worry about since it's just a set of pure components.
+
+I was also already familiar with forking Boring Avatars since I had forked a different fork of it ([https://github.com/luhart/react-native-boring-avatars](https://github.com/luhart/react-native-boring-avatars)) to work around some React Native SVG issues. My fork of that can be found here: [https://www.npmjs.com/package/@mealection/react-native-boring-avatars](https://www.npmjs.com/package/@mealection/react-native-boring-avatars). If you would like to read about why I had to fork that repo, I made a blog post about it over here: [https://mealection.com/blog/forking-react-native-boring-avatars](https://mealection.com/blog/forking-react-native-boring-avatars)
+
+When things felt promising, I let my Twitter followers vote on what the name should be. They decided that I should call my fork "boringer-avatars".
+
+![4 men from the 70's looking into microscopes](../images/2022/first-impressions-of-mitosis/national-cancer-institute--WmRqJwYzZg-unsplash.jpg)
+
+## Things currently missing for all frameworks
+
+Mitosis has a set of "why"s that explain how it could be useful for you or your organization. You can read more about them here: [https://github.com/BuilderIO/mitosis#why-use-mitosis](https://github.com/BuilderIO/mitosis#why-use-mitosis). The problem is that Mitosis does not generate a full "package" in the sense of npmjs.
+
+This means that we have to create our own boilerplate and inject the Mitosis compiled components into the boilerplate output. It would be ideal if all frameworks accepted the same packaging process. Most of them are able to be Vite-based: React, Solid, Vue. However, some of them require their own specific packaging process: Angular, Svelte, maybe more?
+
+So, I created a build script that runs and copies things as needed. This meant I could no longer use the general Mitosis CLI `build` command. Instead, I needed to use the `compile` command which targets a single component rather than a general folder.
+
+![Many cells viewed via microscope with vignetting](../images/2022/first-impressions-of-mitosis/thisisengineering-raeng-p_v9fjRxUR8-unsplash.jpg)
+
+## Framework-specific issues/workarounds
+
+When it comes to framework-specific things, there was a bunch of stuff to hack around. I couldn't cover all of them in one section, so you get to peruse a subsection for each framework.
+
+### SolidJS
+
+Solid was the simplest of them all. Things just seemed to work. I almost wonder if Solid was the example they used for prototyping. But, since it was made by the builder.io team, my guess is that Qwik is actually the prototyping framework used. That gives me confidence to create the Qwik version of boringer-avatars next. All I needed for Solid was to make sure my Vite boilerplate had the correct config to generate a library.
+
+### React
+
+The React implementation almost worked out of the box. During prototyping, it worked just fine and rendered the bauhaus flavor of boring-avatars without a hitch. However, once I started making the other flavors of boring-avatars, beam, marble, etc, I discovered that the underlying usage of `useLocalObservable` was not being observed properly.
+
+Mitosis creates a local state from the `useStore` and wraps it in a `useLocalObservable`. The problem is that `mobx-react-lite` requires you to use a wrapping `Observer` component to actually subscribe and rerender the contents of a component.
+
+The proper fix would be for Mitosis to wrap your component jsx into an Observer component. My fix was to just use a regular expression to replace the local observable with render-time variables. Since these are pure components, they will only ever rerender when their props change. So, this is not a huge issue for this exact implementation. Other libraries and components may have very different concerns.
+
+### Angular
+
+I have a significant amount of experience working with Angular. With that in mind, it made perfect sense to start there next. It turns out that the Angular output needed a bunch of work on the plugin side of things.
+
+The first thing I encountered was an issue with the output from a `Show` component. The `when` attribute just takes in a boolean expression. However if your expression has double quotes, they do not get escaped properly. This then breaks rendering because you end up with something like this in your Angular template:
+`<ng-container *ngIf="checkedVariant === "bauhaus"">`
+
+Spot the issue? The quotes are bailing it out of the `ngIf` too soon and causing a compiler error. I used single quotes at first but Prettier kept switching them back. Rather than fight prettier, I tried backticks instead. These get escaped properly, but the Angular compiler doesn't like the backticks. The fix? I leave the backticks until my plugin can get to it, and then I do a replace of the backtick with a single quote character. It's not ideal, but it works.
+
+Another problem is the strict type checking of SVG elements. When assigning an attribute like `[fill]="someDynamicValue"`, Angular complains that `fill` is not a valid component Input. For this fix, I ended up making my Angular plugin a higher-order function that takes in attribute strings to be formatted like `[attr.fill]`. That appeased Angular's compiler.
+
+It should also be mentioned that the Angular output does not create a Module and it also does not create standalone components. Luckily, this fix was as simple as adding the Module file to the boilerplate.
+
+### Svelte
+
+After Angular, I moved onto Svelte. There were a couple quirks here that required a custom plugin as well.
+
+The first quirk was that the imports of subcomponents lacked a `.svelte`. The Regex to replace that wasn't too hard, but it is specific to my implementation rather than generalized.
+
+Another issue is that `props` should change to `$$props` to be generically spread to a child component. Svelte doesn't recommend this, but it was needed to make things work, at least at first. Maybe the proper fix is to avoid spreading props and pass everything explicitly.
+
+The `useStore` output ends up leaving some of the `state.` references in templates, but Svelte doesn't use the state object in the logic. So, I just needed to replace all usage of `state.`with an empty string.
+
+The last thing I had to fix I ended up doing in a very brittle and app-specific way. I would have trouble trying to make a more broad solution. Some of the state values in the logic portion of components lack an initializing keyword like `let` or `const`. I was able to add it, but I had to look for a very specific string that exists in my app.
+
+### Vue
+
+Vue ended up being the last of my initial set of frameworks to target. Like Angular, Svelte, and React, it needed a custom plugin.
+
+The first thing I fixed was the lack of TS output. I could have just output to JS. But, I wanted to make sure I am outputting types properly for consumers of my library. So I replaced the standard `<script>` tags with `<script lang="ts">`.
+
+The next thing might make you really sad though. I had to replace `this.` with `(this as any).`. A friend who helped debug some of this on stream mentioned that part of the typing issues were likely due to the fact that the output is using the Options API and not the Composition API. After combing through the source code of Mitosis, it appears that the reason for this choice was so that they can reuse some of the same logic between Vue2 and Vue3.
+
+One small thing, similar to Svelte, was that imports needed the `.vue` extension. That was easy enough to fix. And another small fix, also similar to Svelte, was that we needed to replace `v-bind="props"` with `v-bind="$props"`. I find it interesting that Vue and Svelte overlap on some of their problems.
+
+![Old school electron microscope](../images/2022/first-impressions-of-mitosis/michael-czGYgzmdYig-unsplash.jpg)
+
+### Future frameworks?
+
+I think Qwik is next on my list, but I haven't dug into it yet. Another interesting flavor to check out is the Swift UI output. I'm really curious how the SVG stuff would work there. I say this because in React Native, I have already had to fork the React Native version of boring avatars since `react-native-svg` rasterizes the svg-based on SVG viewBox values rather than the eventual size in the application.
+
+## Plugins
+
+That wraps up the framework-specific stuff. I already mentioned the usage of focused plugins for some of the frameworks. But, I didn't really dig into them and how they work, yet.
+
+The plugin system has two sets of hooks, "json" and "code". "json" allows you to manipulate the JSON structure that Mitosis uses to generate all of its outputs. So, you can modify the structure before Mitosis runs its framework-specific generators over it. "code" is the raw string output after the generator has run. Each one has a pre and post hook. For the "json", this means you get into it before and after all built-in modifiers run. For the "code", this means that you get access to the output before and after Prettier or another formatter has been run.
+
+For the most part, I ended up using the "code" hooks and just doing a bunch of Regular Expressions. I believe ThePrimeagen would ask for my Regex license at this time. Shhhhhh, he doesn't have to know.
+
+Here are a few examples of the Regex that had to be done:
+
+-
+
+![Cells with a blue tint](../images/2022/first-impressions-of-mitosis/national-cancer-institute-1PpyUZceg_I-unsplash.jpg)
+
+## Wrapping up
+
+In the end, the process was really fun. I got to dig into something new. I got to practice my Regex chops. I also managed to create usable output for FIVE frameworks from one set of components. I consider that a huge win. If you would like to check out the result, head on over to [https://github.com/cmgriffing/boringer-avatars](https://github.com/cmgriffing/boringer-avatars).
+
+I think Mitosis has some rough edges, but it is still very early in the process. There is a lot of potential and I look forward to seeing what they do next.
