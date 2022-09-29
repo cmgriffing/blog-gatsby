@@ -6,6 +6,10 @@ coverImage: "../images/2022/first-impressions-of-mitosis/michael-x8Yr3WNs5Jo-uns
 description: "The general idea behind Mitosis by the builder.io team is very promising. Write once, compile to anywhere. It's still a bit early for broad adoption, but with a little bit of effort you can get some great results."
 ---
 
+<div class="note" style="margin-top: 2rem;">
+Note: Mitosis is still in early development. Critiques and comments here will most likely be fixed. Just give them some time. If anyone familiar with the project would like to have me add corrections or notes to this article, please create an issue on the Github repo: [https://github.com/cmgriffing/blog-gatsby](https://github.com/cmgriffing/blog-gatsby)
+</div>
+
 Mitosis is a tool that aims to create components for various frameworks from an initial baseline. That baseline is a Mitosis component that gets parsed into a JSON structure. That JSON structure can then be traversed to create components for specific frameworks. Mitosis calls these parsers, generators.
 
 The baseline looks a lot like React code. It ends up needing several of its own custom mechanisms that can then be converted at build time. Some of these include:
@@ -47,6 +51,11 @@ Mitosis has a set of "why"s that explain how it could be useful for you or your 
 This means that we have to create our own boilerplate and inject the Mitosis compiled components into the boilerplate output. It would be ideal if all frameworks accepted the same packaging process. Most of them are able to be Vite-based: React, Solid, Vue. However, some of them require their own specific packaging process: Angular, Svelte, maybe more?
 
 So, I created a build script that runs and copies things as needed. This meant I could no longer use the general Mitosis CLI `build` command. Instead, I needed to use the `compile` command which targets a single component rather than a general folder.
+
+<div class="note" style="background: rgba(245, 206, 66, 0.3); padding: 1rem;">
+Note: After some discussion with the Mitosis maintainers, I might not have needed to use the "compile" command. They have a good example of how they compile their Builder.io sdks here:
+<a href="https://github.com/BuilderIO/builder/tree/main/packages/sdks" target="_blank">https://github.com/BuilderIO/builder/tree/main/packages/sdks</a>
+</div>
 
 ![Many cells viewed via microscope with vignetting](../images/2022/first-impressions-of-mitosis/thisisengineering-raeng-p_v9fjRxUR8-unsplash.jpg)
 

@@ -134,7 +134,8 @@ p,
 .blog-post-content li,
 .blog-post-content h2,
 .blog-post-content h3,
-.blog-post-content h4 {
+.blog-post-content h4,
+.blog-post-content .note {
   max-width: 540px;
   margin-left: auto;
   margin-right: auto;
@@ -142,6 +143,11 @@ p,
 
 .blog-post-content li {
   max-width: 480px;
+}
+
+.blog-post-content .note {
+  background: rgba(245, 206, 66, 0.3);
+  padding: 1rem;
 }
 
 /* @import "../../static/prismjs/themes/prism.css"; */

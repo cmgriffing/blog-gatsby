@@ -23,6 +23,7 @@
 }
 
 .collapsible-code-toggle {
+  margin: auto;
   max-width: 540px;
   display: block;
   background: hsl(0, 0%, 33%);

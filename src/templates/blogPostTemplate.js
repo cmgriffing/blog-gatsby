@@ -60,7 +60,7 @@ export default function Template({
         <PostImage
           fixed={{
             ...frontmatter.coverImage.childImageSharp.fixed,
-            base64: frontmatter.coverImage.childImageSharp.sqip.dataURI,
+            base64: frontmatter.coverImage.childImageSharp?.sqip?.dataURI,
           }}
         />
         <div
