@@ -79,10 +79,16 @@ const ProjectsPage = ({ data }) => {
       }, 0)
     )
 
+    const totalUnique = monthlyMetrics.reduce((acc, metric) => {
+      return acc + +metric.node.Unique_Viewers
+    }, 0);
+
+    console.log({totalUnique});
+
     setdailyUniqueViewTotal(
       monthlyMetrics.reduce((acc, metric) => {
         return acc + +metric.node.Unique_Viewers
-      }, 0) / monthlyMetrics.length
+      }, 0) / monthlyMetrics.length / 30
     )
 
     setAverageViewers(
