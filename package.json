@@ -21,7 +21,7 @@
     "gatsby-remark-prismjs": "^6.0.0",
     "gatsby-remark-source-name": "^1.0.0",
     "gatsby-source-filesystem": "^4.0.0",
-    "gatsby-transformer-remark": "^5.0.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.0.0",
     "gatsby-transformer-sqip": "^4.0.0",
     "intersection-observer": "^0.12.0",
