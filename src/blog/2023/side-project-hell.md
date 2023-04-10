@@ -1,6 +1,6 @@
 ---
 title: "Side Project Hell: It's not as bad as you think"
-date: "2022-01-21"
+date: "2023-04-10"
 slug: "side-project-hell"
 coverImage: "../images/2023/side-projects-graveyard.png"
 description: "There is some common wisdom that promotes make projects rather than spending too much time in tutorial hell. After some time doing so, it might feel like you have entered side project hell. It turns out that it doesn't exist. Let me explain why."
