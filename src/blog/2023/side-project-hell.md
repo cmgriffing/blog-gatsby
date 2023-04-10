@@ -8,7 +8,8 @@ description: "There is some common wisdom that promotes make projects rather tha
 
 For people starting out in the software dev world, it can be really easy to fall into "Tutorial Hell". The common wisdom to avoid that is to start making things for yourself. Side projects are, indeed, the best way to solidify your learning. However, if you start enough side projects, it could start to feel like you never finish any.
 
-<div><!-- youtube content goes here --></div>
+If you prefer a video, you can check this out on my YouTube Channel:
+`youtube: -L37U81MunM`
 
 ## A Great Comic
 
