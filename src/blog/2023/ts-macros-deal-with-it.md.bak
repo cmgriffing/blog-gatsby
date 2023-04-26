@@ -1,0 +1,38 @@
+---
+title: "TS Macros: Deal with it"
+date: "2023-04-10"
+slug: "ts-macros-deal-with-it"
+coverImage: "../images/2023/side-projects-graveyard.png"
+description: "I found a pattern I reall like. I wish I could claim credit for it. That also means its not completely my fault. You can make the functional equivalent of a Rust macro in TS. Ok, not perfectly, but close enough with some effort."
+---
+
+## Warning
+
+This is not for the faint of heart
+
+## What is a macro
+
+- rust
+- other languages
+
+## Macro checklist
+
+## TS?
+
+Show TSOA, the inspiration
+
+## The macro...
+
+No-op decorator
+
+## Consuming and adapting the Decorator
+
+## Checking the checklist
+
+## Where I use it
+
+- Calatravas OpenAPI thing
+
+## Wrapping up
+
+
