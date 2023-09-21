@@ -2,8 +2,8 @@
 title: "Code Locality Concerns"
 date: "2023-09-20"
 slug: "code-locality-concerns"
-coverImage: "../images/2023/concerns.avif"
-description: "Recently, on stream, I needed to focus an element. It wasn;t focusing until I kicked the focus to the next iteration of the event loop. There are a few ways to do such a thing and it brought up a concern I had about code locality vs being idiomatic."
+coverImage: "../images/2023/elena-mozhvilo-yyBzyiGEh6s-unsplash.jpg"
+description: "Recently, on stream, I needed to focus an element. It wasn't focusing until I kicked the focus to the next iteration of the event loop. There are a few ways to do such a thing and it brought up a concern I had about code locality vs being idiomatic."
 ---
 
 Recently, on stream, I needed to focus an element. It wasn't focusing until I kicked the focus to the next iteration of the event loop. There are a few ways to do such a thing and it brought up a concern I had about code locality vs being idiomatic.
