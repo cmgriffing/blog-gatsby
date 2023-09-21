@@ -42,9 +42,7 @@ export function Search() {
       <CommandDialog
         open={open}
         onOpenChange={(open) => {
-          if (open === true) {
-            // nothing to do here
-          } else {
+          if (!open) {
             setOpen(false);
           }
         }}
@@ -67,8 +65,7 @@ export function Search() {
       <CommandDialog
         open={open}
         onOpenChange={(open) => {
-          if (open === true) {
-          } else {
+          if (!open) {
             setOpen(false);
 
             // need to kick the focus to next iteration of the event loop
@@ -81,7 +78,7 @@ export function Search() {
           }
         }}
       >
-// ...
+    // ...
 ```
 
 ## The Concern
