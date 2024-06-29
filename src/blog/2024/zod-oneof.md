@@ -1,7 +1,7 @@
 ---
-title: "E2E Testing Expo Apps with Detox"
-date: "2022-01-21"
-slug: "e2e-test-expo-apps-with-detox"
+title: "Custom Zod oneOf validator"
+date: "2024-06-28"
+slug: "custom-zod-oneof-validator"
 coverImage: "../images/2024/esteban-lopez-rsXAKLDfqB8-unsplash.jpg"
 description: "Zod is a fantastic validation library but if you are coming from a different validation library it might feel like some things are missing. One of those things is `oneOf`. In this short post we go over why `z.enum` is sometimes insufficient and how you can implement your own custom `oneOf`."
 
