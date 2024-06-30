@@ -25,7 +25,7 @@ Zod is typescript-native and by doing so it can know more about its schemas duri
 
 This is a double-edged sword, though. It means that certain things are not as easy when using Zod out-of-the-box. One of those things is the idea of dynamically determined arrays. If you want to validate for a value being from an array you might use `z.enum`.
 
-However, if you read the [docs for Zod enums](https://zod.dev/?id=zod-enums) you might notice that they require you to use [z.enum] directly or you can pass an array to `z.enum` as long as you define the array `as const`. This is because of Zod's compile-time behavior. If you keep reading in their docs, you will see that they cannot allow dynamic arrays because it breaks Zod's infer capabilities.
+However, if you read the [docs for Zod enums](https://zod.dev/?id=zod-enums) you might notice that they require you to use `z.enum` directly or you can pass an array to `z.enum` as long as you define the array `as const`. This is because of Zod's compile-time behavior. If you keep reading in their docs, you will see that they cannot allow dynamic arrays because it breaks Zod's infer capabilities.
 
 ![No dynamic arrays allowed for z.enum](../images/2024/Zod___Documentation.png)
 
